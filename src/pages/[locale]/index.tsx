@@ -67,7 +67,7 @@ export default function Home() {
             </section>
 
             <section class="nx-story">
-                <img src="/static/logo.svg" alt="Nexa" width="64" height="64" />
+                <img src="/static/logo.svg" alt="Nexa" width="88" />
                 <div>
                     <h2>{t("home.storyTitle")}</h2>
                     <p>{t("home.storyBody")}</p>

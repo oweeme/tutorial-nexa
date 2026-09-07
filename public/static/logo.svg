@@ -1,35 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Nexa">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" role="img" aria-label="Nexa">
   <defs>
-    <linearGradient id="flame" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#EF3B4A"/>
-      <stop offset="100%" stop-color="#F2B705"/>
+    <linearGradient id="flameOuter" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#A8121C"/>
+      <stop offset="55%" stop-color="#E8531F"/>
+      <stop offset="100%" stop-color="#F7B733"/>
     </linearGradient>
-    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#F4D35E"/>
+    <linearGradient id="flameMid" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#C81E2C"/>
+      <stop offset="55%" stop-color="#F2701E"/>
+      <stop offset="100%" stop-color="#FBCB4A"/>
+    </linearGradient>
+    <linearGradient id="flameInner" x1="0" y1="1" x2="0.6" y2="0">
+      <stop offset="0%" stop-color="#D4302C"/>
+      <stop offset="55%" stop-color="#F79420"/>
+      <stop offset="100%" stop-color="#FFE180"/>
+    </linearGradient>
+    <linearGradient id="flameTip" x1="0" y1="1" x2="0.3" y2="0">
+      <stop offset="0%" stop-color="#E2481F"/>
+      <stop offset="100%" stop-color="#FFF3B0"/>
+    </linearGradient>
+    <linearGradient id="petalOuter" x1="0" y1="1" x2="0.3" y2="0">
+      <stop offset="0%" stop-color="#0F5C3B"/>
+      <stop offset="100%" stop-color="#2E9F63"/>
+    </linearGradient>
+    <linearGradient id="petalInner" x1="0" y1="1" x2="0.3" y2="0">
+      <stop offset="0%" stop-color="#177A4A"/>
+      <stop offset="100%" stop-color="#4FC97F"/>
+    </linearGradient>
+    <radialGradient id="jewel" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#FFF6DA"/>
+      <stop offset="45%" stop-color="#F7CE68"/>
       <stop offset="100%" stop-color="#C99A2E"/>
-    </linearGradient>
-    <radialGradient id="bg" cx="35%" cy="30%" r="80%">
-      <stop offset="0%" stop-color="#1A1A1D"/>
-      <stop offset="100%" stop-color="#0B0B0C"/>
     </radialGradient>
   </defs>
 
-  <circle cx="100" cy="100" r="96" fill="url(#bg)"/>
-  <circle cx="100" cy="100" r="96" fill="none" stroke="#C99A2E" stroke-width="1.5" opacity="0.6"/>
+  <!-- ala derecha -->
+  <g>
+    <path d="M 125.9 135.2 C 152.6 129.5 184.0 127.0 205.2 134.1 C 185.8 135.8 155.7 144.2 130.1 154.8 Z" fill="url(#flameOuter)"/>
+    <path d="M 122.7 136.5 C 150.3 114.6 187.2 98.1 216.3 98.1 C 193.8 108.8 161.4 132.4 133.3 153.5 Z" fill="url(#flameMid)"/>
+    <path d="M 120.6 139.8 C 139.9 107.2 168.6 74.5 196.0 61.1 C 177.4 80.7 154.6 117.5 135.4 150.2 Z" fill="url(#flameInner)"/>
+    <path d="M 120.7 143.2 C 126.2 115.0 137.6 84.0 153.3 67.0 C 145.5 86.0 139.3 118.2 135.3 146.8 Z" fill="url(#flameTip)"/>
+  </g>
+  <!-- ala izquierda (espejo) -->
+  <g transform="translate(240,0) scale(-1,1)">
+    <path d="M 125.9 135.2 C 152.6 129.5 184.0 127.0 205.2 134.1 C 185.8 135.8 155.7 144.2 130.1 154.8 Z" fill="url(#flameOuter)"/>
+    <path d="M 122.7 136.5 C 150.3 114.6 187.2 98.1 216.3 98.1 C 193.8 108.8 161.4 132.4 133.3 153.5 Z" fill="url(#flameMid)"/>
+    <path d="M 120.6 139.8 C 139.9 107.2 168.6 74.5 196.0 61.1 C 177.4 80.7 154.6 117.5 135.4 150.2 Z" fill="url(#flameInner)"/>
+    <path d="M 120.7 143.2 C 126.2 115.0 137.6 84.0 153.3 67.0 C 145.5 86.0 139.3 118.2 135.3 146.8 Z" fill="url(#flameTip)"/>
+  </g>
 
-  <!-- hoja de loto: la N renace de ella -->
-  <path d="M46 152 C 30 146, 24 130, 34 116 C 46 124, 52 138, 46 152 Z" fill="#1E8F5F"/>
-  <path d="M154 152 C 170 146, 176 130, 166 116 C 154 124, 148 138, 154 152 Z" fill="#1E8F5F" opacity="0.85"/>
+  <!-- loto: pétalos -->
+  <g>
+    <path d="M120 178 C 94 173, 74 154, 70 128 C 70 121, 73 116, 78 113 C 91 129, 105 150, 120 164 Z" fill="url(#petalOuter)"/>
+    <path d="M120 181 C 146 176, 166 157, 170 131 C 170 124, 167 119, 162 116 C 149 132, 135 153, 120 167 Z" fill="url(#petalOuter)"/>
+    <path d="M120 174 C 100 166, 87 147, 86 124 C 87 117, 90 113, 95 111 C 104 128, 112 149, 120 162 Z" fill="url(#petalInner)"/>
+    <path d="M120 174 C 140 166, 153 147, 154 124 C 153 117, 150 113, 145 111 C 136 128, 128 149, 120 162 Z" fill="url(#petalInner)"/>
+    <path d="M120 170 C 111 153, 107 134, 110 115 C 112 108, 116 104, 120 102 C 124 104, 128 108, 130 115 C 133 134, 129 153, 120 170 Z" fill="url(#petalInner)"/>
+  </g>
 
-  <!-- letra N -->
-  <rect x="40" y="40" width="24" height="120" rx="3" fill="url(#gold)"/>
-  <rect x="136" y="40" width="24" height="120" rx="3" fill="url(#gold)"/>
-  <polygon points="64,40 88,40 136,160 112,160" fill="url(#flame)"/>
-
-  <!-- llamas: puntas de reborn -->
-  <path d="M46 40 C 40 30, 44 20, 52 14 C 56 24, 54 34, 46 40 Z" fill="url(#flame)"/>
-  <path d="M154 40 C 148 30, 152 20, 160 14 C 164 24, 162 34, 154 40 Z" fill="url(#flame)"/>
-
-  <!-- chispa -->
-  <circle cx="150" cy="46" r="5" fill="#FFF7E6"/>
+  <!-- joya central -->
+  <circle cx="120" cy="141" r="14" fill="url(#jewel)"/>
+  <circle cx="115" cy="135" r="4.5" fill="#FFFFFF" opacity="0.8"/>
 </svg>

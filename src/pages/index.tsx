@@ -7,7 +7,7 @@ export const seo = {
 export default function LanguageGate() {
     return (
         <main class="nx-gate">
-            <img src="/static/logo.svg" alt="Nexa" width="96" height="96" />
+            <img src="/static/logo.svg" alt="Nexa" width="160" />
             <h1>nexa</h1>
             <div class="nx-gate-links">
                 <a class="nx-btn nx-btn-primary" href="/es">Español</a>
