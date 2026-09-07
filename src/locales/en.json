@@ -231,8 +231,11 @@
       "s1Body": "It must be empty, and there must be exactly one in the whole layout — that's where each page's already-rendered HTML gets inserted, verbatim.",
       "s2Title": "Why this isn't composition",
       "s2Body": "The layout compiles just like any page. Neither the layout nor the page know about each other before that final splice.",
+      "s3Title": "export const head: the one thing that really reaches <head>",
+      "s3Body": "Everything else the layout returns ends up inside <body> (via the splice above) — a <link rel=\"icon\"> placed there gets stuck in <body>, where not every browser detects it reliably (this very site had exactly that bug). export const head = { icon, appleTouchIcon, stylesheets } is resolved separately and merged into the document's real <head> — same pattern as seo/schema, a literal object, never executed code.",
       "s1Code": "// src/layout.tsx\nexport default function Layout() {\n    return (\n        <div>\n            <header>My site</header>\n            <div data-nexa-slot></div>\n            <footer>© 2026</footer>\n        </div>\n    );\n}",
-      "s2Code": "// Rust renders the layout, finds the ONE data-nexa-slot\n// (must be empty), and inserts there the HTML the page\n// already rendered — a text splice, not a function call."
+      "s2Code": "// Rust renders the layout, finds the ONE data-nexa-slot\n// (must be empty), and inserts there the HTML the page\n// already rendered — a text splice, not a function call.",
+      "s3Code": "// src/layout.tsx\nexport const head = {\n    icon: \"/static/logo.svg\",\n    appleTouchIcon: \"/static/icon-180.png\",\n    stylesheets: [\"/static/site.css\"]\n};\n\nexport default function Layout() { /* ... */ }"
     },
     "pwa": {
       "step": "Step 13",
