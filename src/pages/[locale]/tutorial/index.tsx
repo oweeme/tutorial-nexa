@@ -49,6 +49,10 @@ export default function TutorialHub() {
                     <span class="nx-step-num">{t("tutorial.islands.step")}</span>
                     <h3>{t("tutorial.islands.title")}</h3>
                 </a>
+                <a class="nx-step-card" href={`/${params.locale}/tutorial/libraries`}>
+                    <span class="nx-step-num">{t("tutorial.libraries.step")}</span>
+                    <h3>{t("tutorial.libraries.title")}</h3>
+                </a>
                 <a class="nx-step-card" href={`/${params.locale}/tutorial/realtime`}>
                     <span class="nx-step-num">{t("tutorial.realtime.step")}</span>
                     <h3>{t("tutorial.realtime.title")}</h3>

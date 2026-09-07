@@ -32,7 +32,7 @@
     "adv8Body": "load() hace un GET HTTP a cualquier backend que ya tengas — PHP, Go, Node, lo que sea. Nexa no impone el tuyo.",
     "storyTitle": "Sobre el logo",
     "storyBody": "El isotipo de Nexa está inspirado en Nezha (哪吒), la deidad del renacimiento: dos llamas doradas forman la N, naciendo de una hoja de loto — el mismo símbolo de renacer que usa su mito. Rojo, negro, dorado y verde jade, la paleta tradicional asociada a esa historia.",
-    "stat1Num": "16",
+    "stat1Num": "17",
     "stat1Label": "pasos del tutorial",
     "stat2Num": "0 KB",
     "stat2Label": "JS en una página sin interacción",
@@ -63,7 +63,7 @@
   },
   "tutorialHub": {
     "title": "Tutorial: de cero a producción",
-    "intro": "Dieciséis pasos, cada uno con código real. Al final vas a tener un sitio Nexa completo, desplegado.",
+    "intro": "Diecisiete pasos, cada uno con código real. Al final vas a tener un sitio Nexa completo, desplegado.",
     "startBtn": "Empezar"
   },
   "tutorial": {
@@ -192,8 +192,25 @@
       "s2Code": "// src/islands/dashboard.island.ts\nexport default function mount(el, props) {\n    // @nexa/reactivity a mano, o un adaptador de Vue/Preact/etc.\n    return () => { /* cleanup opcional */ };\n}",
       "s3Code": "// nexa.toml\n[imports]\ndashboard = \"/vendor/dashboard-island.js\""
     },
-    "realtime": {
+    "libraries": {
       "step": "Paso 10",
+      "title": "Librerías externas y otros frameworks",
+      "intro": "¿Bootstrap, PrimeVue, un gráfico con Chart.js, un juego con Phaser, o convivir con una app entera de Quasar, Vue, React o Angular? Nexa no reemplaza nada de eso — sabe convivir con todo, con un mecanismo distinto según qué tan \"viva\" sea la librería.",
+      "s1Title": "CSS de terceros: un <link> normal",
+      "s1Body": "Bootstrap, Tailwind por CDN, el CSS de PrimeVue/PrimeReact — Nexa nunca procesa ni entiende ese CSS, así que no hace falta ningún paso especial. Un <link rel=\"stylesheet\"> en src/layout.tsx (para todo el sitio) o en una página puntual alcanza.",
+      "s2Title": "JS con build global (UMD): un <script> normal",
+      "s2Body": "Bootstrap JS, Chart.js, y en general cualquier librería que se pueda cargar como <script> clásico (no type=\"module\") deja una variable global (bootstrap, Chart, ...). Como un chunk de Nexa copia el handler tal cual, podés usar esa variable global directo en un onClick — sin declarar nada en nexa.toml.",
+      "s3Title": "Librerías ES module puras: el mismo [imports] que platform/stripe",
+      "s3Body": "Si la librería solo se distribuye como módulo ES (sin build global), usá [imports] — el mismo mecanismo que ya usan platform y stripe. El chunk detecta <nombre>. en el handler y antepone el import; el import map del <head> resuelve el specifier a la URL real.",
+      "s4Title": "Motores y frameworks completos: como isla",
+      "s4Body": "Para algo con ciclo de vida propio — el loop de un juego de Phaser, o un árbol de componentes con estado de Vue/Quasar/React/Angular — la respuesta es una isla, no [imports] suelto en un handler. Tu app de Quasar se compila con SU propio build (Vite, igual que siempre); Nexa nunca lee tus .vue ni tus .tsx de React, solo sirve el bundle final como cualquier otro JS. Importante: aunque la sintaxis de Nexa se parezca a React (JSX, export default function), una página Nexa NO es un componente React — se compila a HTML estático una sola vez, sin VDOM, sin hooks, sin re-render. useState/useEffect no funcionan ahí; si necesitás eso de verdad, va dentro de una isla que use React de verdad.",
+      "s1Code": "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">",
+      "s2Code": "<script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>\n\nfunction renderChart() {\n    new Chart(document.getElementById(\"grafico\"), {\n        type: \"bar\",\n        data: { labels: [\"Ene\", \"Feb\"], datasets: [{ data: [10, 20] }] }\n    });\n}",
+      "s3Code": "# nexa.toml\n[imports]\nconfetti = \"https://esm.sh/canvas-confetti\"",
+      "s4Code": "<div data-nexa-island=\"game\" data-nexa-strategy=\"visible\">\n    <p>Cargando juego…</p>\n</div>\n\n// src/islands/game.island.ts — Phaser cargado como <script> global\nexport default function mount(el) {\n    const game = new Phaser.Game({ parent: el, width: 800, height: 600 });\n    return () => game.destroy(true);\n}"
+    },
+    "realtime": {
+      "step": "Paso 11",
       "title": "Tiempo real: SSE y WebSocket",
       "intro": "connectSSE y connectSocket en @nexa/http envuelven las APIs nativas del navegador en señales reactivas — sin protocolo propio.",
       "s1Title": "Server-Sent Events",
@@ -204,7 +221,7 @@
       "s2Code": "import { connectSocket } from \"@nexa/http\";\n\nconst chat = connectSocket({ url: \"wss://miapp.com/chat\" });\nchat.send({ text: \"hola\" });\n// chat.status.value -> \"connecting\" | \"open\" | \"closed\""
     },
     "layouts": {
-      "step": "Paso 11",
+      "step": "Paso 12",
       "title": "Layouts compartidos",
       "intro": "Un src/layout.tsx opcional envuelve el HTML de toda página — header, footer, nav — sin reabrir la composición de componentes.",
       "s1Title": "El elemento data-nexa-slot",
@@ -215,7 +232,7 @@
       "s2Code": "// Rust renderiza el layout, encuentra el ÚNICO data-nexa-slot\n// (debe estar vacío), e inserta ahí el HTML que ya renderizó\n// la página — un splice de texto, no una llamada de función."
     },
     "pwa": {
-      "step": "Paso 12",
+      "step": "Paso 13",
       "title": "PWA declarativo",
       "intro": "nexa add pwa agrega un bloque [pwa] real a nexa.toml — nexa build genera un manifest.webmanifest y un service worker de verdad, no una plantilla vacía.",
       "s1Title": "Declarar el manifest",
@@ -226,7 +243,7 @@
       "s2Code": "[pwa.cache]\n\"/assets\" = \"cache-first\"\n\"/api\" = \"network-first\""
     },
     "images": {
-      "step": "Paso 13",
+      "step": "Paso 14",
       "title": "Imágenes optimizadas",
       "intro": "nexa build optimiza cualquier <img src=\"...\"> estático solo, sin que el desarrollador toque nada: variantes AVIF reales, HTML reescrito a <picture>.",
       "s1Title": "No hace falta declarar nada",
@@ -237,7 +254,7 @@
       "s2Code": "<picture>\n    <source srcset=\"/foto-800.avif\" type=\"image/avif\">\n    <img src=\"/foto.jpg\" alt=\"Producto\">\n</picture>"
     },
     "performance": {
-      "step": "Paso 14",
+      "step": "Paso 15",
       "title": "Presupuestos de rendimiento",
       "intro": "nexa.toml puede declarar límites de JS/CSS/imagen por página — a diferencia de los avisos de SEO, esto sí bloquea el build de verdad.",
       "s1Title": "Declarar el presupuesto",
@@ -248,7 +265,7 @@
       "s2Code": "nexa build\n# Presupuesto de rendimiento excedido (1 página(s)):\n#   /productos: maxInitialJS usa 18204 bytes, supera 15000\n# Error: el build no cumple el presupuesto de nexa.toml"
     },
     "native": {
-      "step": "Paso 15",
+      "step": "Paso 16",
       "title": "Empaquetado nativo",
       "intro": "El mismo código fuente compila a un binario de escritorio real (Tauri) o un APK real (Capacitor) — sin reescribir nada.",
       "s1Title": "Escritorio con Tauri",
@@ -259,7 +276,7 @@
       "s2Code": "nexa add capacitor\nnpx @capacitor/cli add android\ncd android && ./gradlew assembleDebug\n# APK real en app/build/outputs/apk/debug/"
     },
     "production": {
-      "step": "Paso 16",
+      "step": "Paso 17",
       "title": "A producción",
       "intro": "El último tramo: lint, test, y un deploy real — el mismo camino que siguió este propio sitio, publicado en GitHub Pages.",
       "s1Title": "nexa lint",

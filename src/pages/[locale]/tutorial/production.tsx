@@ -20,13 +20,14 @@ export default function TutorialProduction() {
                 <a href={`/${params.locale}/tutorial/styling`}><span class="nx-toc-num">07</span>{t("tutorial.styling.title")}</a>
                 <a href={`/${params.locale}/tutorial/forms`}><span class="nx-toc-num">08</span>{t("tutorial.forms.title")}</a>
                 <a href={`/${params.locale}/tutorial/islands`}><span class="nx-toc-num">09</span>{t("tutorial.islands.title")}</a>
-                <a href={`/${params.locale}/tutorial/realtime`}><span class="nx-toc-num">10</span>{t("tutorial.realtime.title")}</a>
-                <a href={`/${params.locale}/tutorial/layouts`}><span class="nx-toc-num">11</span>{t("tutorial.layouts.title")}</a>
-                <a href={`/${params.locale}/tutorial/pwa`}><span class="nx-toc-num">12</span>{t("tutorial.pwa.title")}</a>
-                <a href={`/${params.locale}/tutorial/images`}><span class="nx-toc-num">13</span>{t("tutorial.images.title")}</a>
-                <a href={`/${params.locale}/tutorial/performance`}><span class="nx-toc-num">14</span>{t("tutorial.performance.title")}</a>
-                <a href={`/${params.locale}/tutorial/native`}><span class="nx-toc-num">15</span>{t("tutorial.native.title")}</a>
-                <a class="active" href={`/${params.locale}/tutorial/production`}><span class="nx-toc-num">16</span>{t("tutorial.production.title")}</a>
+                <a href={`/${params.locale}/tutorial/libraries`}><span class="nx-toc-num">10</span>{t("tutorial.libraries.title")}</a>
+                <a href={`/${params.locale}/tutorial/realtime`}><span class="nx-toc-num">11</span>{t("tutorial.realtime.title")}</a>
+                <a href={`/${params.locale}/tutorial/layouts`}><span class="nx-toc-num">12</span>{t("tutorial.layouts.title")}</a>
+                <a href={`/${params.locale}/tutorial/pwa`}><span class="nx-toc-num">13</span>{t("tutorial.pwa.title")}</a>
+                <a href={`/${params.locale}/tutorial/images`}><span class="nx-toc-num">14</span>{t("tutorial.images.title")}</a>
+                <a href={`/${params.locale}/tutorial/performance`}><span class="nx-toc-num">15</span>{t("tutorial.performance.title")}</a>
+                <a href={`/${params.locale}/tutorial/native`}><span class="nx-toc-num">16</span>{t("tutorial.native.title")}</a>
+                <a class="active" href={`/${params.locale}/tutorial/production`}><span class="nx-toc-num">17</span>{t("tutorial.production.title")}</a>
             </nav>
             <main class="nx-page nx-tutorial-step">
                 <span class="nx-step-badge">{t("tutorial.production.step")}</span>
