@@ -70,15 +70,23 @@ html, body {
 .nx-lang-switch a { color: #aaa; font-weight: 600; }
 .nx-lang-switch a:hover { color: var(--nx-gold-bright); }
 
-/* Hero */
+/* Hero — layout dividido en dos columnas */
 .nx-hero {
-    text-align: center;
-    padding: 5.5rem 1.5rem 3.5rem;
+    padding: 4.5rem 2rem;
     background:
-        radial-gradient(60% 90% at 50% 0%, rgba(200, 16, 46, 0.16), transparent 65%),
-        linear-gradient(180deg, #17110d 0%, var(--nx-black) 75%);
+        radial-gradient(50% 80% at 15% 20%, rgba(200, 16, 46, 0.18), transparent 60%),
+        linear-gradient(180deg, #17110d 0%, var(--nx-black) 80%);
     color: #fff;
 }
+.nx-hero-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+.nx-hero-copy { text-align: left; }
 .nx-kicker {
     display: inline-block;
     color: var(--nx-gold-bright);
@@ -88,8 +96,9 @@ html, body {
     font-weight: 700;
     margin-bottom: 1.1rem;
 }
+.nx-kicker-light { color: var(--nx-color-primary); }
 .nx-hero h1 {
-    font-size: clamp(2rem, 5vw, 3.4rem);
+    font-size: clamp(2rem, 4.2vw, 3.1rem);
     line-height: 1.15;
     margin: 0 0 1.3rem;
     background: linear-gradient(90deg, #fff 30%, var(--nx-gold-bright) 100%);
@@ -98,12 +107,12 @@ html, body {
     -webkit-text-fill-color: transparent;
 }
 .nx-hero-sub {
-    max-width: 640px;
-    margin: 0 auto 2.2rem;
+    max-width: 520px;
+    margin: 0 0 2.2rem;
     color: #cfcfcf;
-    font-size: 1.1rem;
+    font-size: 1.08rem;
 }
-.nx-hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.nx-hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
 .nx-hero-ctas .nx-btn { font-weight: 600; padding: 0.8rem 1.6rem; font-size: 1rem; }
 .nx-hero-ctas .nx-btn-primary { box-shadow: 0 8px 24px rgba(200, 16, 46, 0.35); }
 .nx-hero-ctas .nx-btn:not(.nx-btn-primary) {
@@ -113,16 +122,37 @@ html, body {
 }
 .nx-hero-ctas .nx-btn:not(.nx-btn-primary):hover { background: rgba(201, 154, 46, 0.15); }
 
-/* Code sample */
-.nx-code-sample {
-    max-width: 720px;
-    margin: -1.75rem auto 0;
-    padding: 0 1.5rem;
-    position: relative;
-    z-index: 1;
+/* Panel de código — como una ventana de editor */
+.nx-hero-panel { min-width: 0; }
+.nx-window {
+    background: var(--nx-black);
+    border: 1px solid #2a2a2a;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--nx-shadow-lg);
 }
-.nx-code-caption { text-align: center; color: #6b6b6b; font-size: 0.9rem; margin-bottom: 0.85rem; }
-.nx-code-sample pre, .nx-page pre {
+.nx-window-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1rem;
+    background: #161616;
+    border-bottom: 1px solid #262626;
+}
+.nx-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.nx-dot-r { background: #e0524a; }
+.nx-dot-y { background: #e0b64a; }
+.nx-dot-g { background: #52b565; }
+.nx-window-title { margin-left: 0.6rem; color: #888; font-size: 0.8rem; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.nx-window pre {
+    margin: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.nx-page pre {
     background: var(--nx-black);
     color: #eee;
     border: 1px solid #262626;
@@ -132,9 +162,15 @@ html, body {
     font-size: 0.9rem;
     box-shadow: var(--nx-shadow-lg);
 }
-.nx-code-sample code, .nx-page code {
+.nx-window code, .nx-page code {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     white-space: pre;
+}
+.nx-window pre {
+    padding: 1.4rem 1.6rem;
+    overflow-x: auto;
+    font-size: 0.86rem;
+    color: #eee;
 }
 .nx-page :not(pre) > code {
     background: #f0ebe0;
@@ -143,11 +179,31 @@ html, body {
     font-size: 0.9em;
 }
 
+/* Stats strip */
+.nx-stats { background: #fff; border-bottom: 1px solid var(--nx-color-border); padding: 2.75rem 1.5rem; }
+.nx-stats-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    text-align: center;
+}
+.nx-stat-num {
+    display: block;
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: var(--nx-color-primary);
+    line-height: 1.1;
+}
+.nx-stat-label { display: block; color: #666; font-size: 0.88rem; margin-top: 0.4rem; }
+
 /* Advantages grid */
-.nx-advantages { max-width: 1100px; margin: 5rem auto; padding: 0 1.5rem; }
-.nx-advantages h2, .nx-story h2 { text-align: center; font-size: 1.9rem; margin-bottom: 2.5rem; }
-.nx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+.nx-advantages { max-width: 1100px; margin: 5rem auto; padding: 0 1.5rem; text-align: center; }
+.nx-advantages h2, .nx-story h2 { text-align: center; font-size: 1.9rem; margin: 0 0 2.5rem; }
+.nx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: left; }
 .nx-grid .nx-card {
+    position: relative;
     border: 1px solid var(--nx-color-border);
     background: #fff;
     border-radius: 14px;
@@ -156,6 +212,14 @@ html, body {
     transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 .nx-grid .nx-card:hover { box-shadow: var(--nx-shadow-md); transform: translateY(-3px); }
+.nx-card-num {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--nx-gold);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+}
 .nx-grid .nx-card-title {
     color: var(--nx-color-text);
     font-size: 1.08rem;
@@ -212,11 +276,18 @@ html, body {
 .nx-footer-license { color: #666; }
 
 /* Compatibility + tutorial content pages */
-.nx-page { max-width: 780px; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
+.nx-page { max-width: 800px; margin: 0 auto; padding: 3.5rem 1.5rem 5rem; }
 .nx-page h1 { font-size: 2.2rem; margin-bottom: 0.6rem; }
 .nx-page > p:first-of-type { color: #555; font-size: 1.08rem; }
-.nx-page section { margin-top: 2.75rem; }
-.nx-page section h2 { font-size: 1.3rem; border-bottom: 2px solid var(--nx-gold); display: inline-block; padding-bottom: 0.25rem; margin-bottom: 0.9rem; }
+.nx-page section {
+    margin-top: 1.75rem;
+    background: #fff;
+    border: 1px solid var(--nx-color-border);
+    border-radius: 14px;
+    padding: 1.75rem 2rem 2rem;
+    box-shadow: var(--nx-shadow-sm);
+}
+.nx-page section h2 { font-size: 1.25rem; border-bottom: 2px solid var(--nx-gold); display: inline-block; padding-bottom: 0.25rem; margin-bottom: 0.9rem; }
 .nx-page section p { color: #333; margin-top: 0.9rem; }
 
 /* Tutorial hub */
@@ -266,6 +337,13 @@ html, body {
 }
 .nx-tutorial-nav a { color: var(--nx-color-primary); text-decoration: none; font-weight: 600; }
 .nx-tutorial-nav a:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+    .nx-hero-grid { grid-template-columns: 1fr; }
+    .nx-hero-copy { text-align: center; }
+    .nx-hero-sub { margin-left: auto; margin-right: auto; }
+    .nx-hero-ctas { justify-content: center; }
+}
 
 @media (max-width: 640px) {
     .nx-header { flex-direction: column; gap: 0.75rem; padding: 1rem; }

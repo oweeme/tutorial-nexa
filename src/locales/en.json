@@ -31,7 +31,17 @@
     "adv8Title": "Backend-agnostic",
     "adv8Body": "load() makes a real HTTP GET against any backend you already have — PHP, Go, Node, whatever. Nexa doesn't impose its own.",
     "storyTitle": "About the logo",
-    "storyBody": "Nexa's mark is inspired by Nezha (哪吒), the deity of rebirth: two golden flames form the N, rising from a lotus leaf — the same rebirth symbol from his myth. Red, black, gold and jade green, the traditional palette tied to that story."
+    "storyBody": "Nexa's mark is inspired by Nezha (哪吒), the deity of rebirth: two golden flames form the N, rising from a lotus leaf — the same rebirth symbol from his myth. Red, black, gold and jade green, the traditional palette tied to that story.",
+    "stat1Num": "16",
+    "stat1Label": "tutorial steps",
+    "stat2Num": "0 KB",
+    "stat2Label": "JS on a page with no interaction",
+    "stat3Num": "2",
+    "stat3Label": "languages, using the framework's own i18n",
+    "stat4Num": "100%",
+    "stat4Label": "real HTML, indexable without running JS",
+    "heroCodeTitle": "src/pages/index.tsx",
+    "featuresKicker": "Advantages"
   },
   "compat": {
     "title": "Compatibility",

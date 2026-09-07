@@ -31,7 +31,17 @@
     "adv8Title": "Backend-agnóstico",
     "adv8Body": "load() hace un GET HTTP a cualquier backend que ya tengas — PHP, Go, Node, lo que sea. Nexa no impone el tuyo.",
     "storyTitle": "Sobre el logo",
-    "storyBody": "El isotipo de Nexa está inspirado en Nezha (哪吒), la deidad del renacimiento: dos llamas doradas forman la N, naciendo de una hoja de loto — el mismo símbolo de renacer que usa su mito. Rojo, negro, dorado y verde jade, la paleta tradicional asociada a esa historia."
+    "storyBody": "El isotipo de Nexa está inspirado en Nezha (哪吒), la deidad del renacimiento: dos llamas doradas forman la N, naciendo de una hoja de loto — el mismo símbolo de renacer que usa su mito. Rojo, negro, dorado y verde jade, la paleta tradicional asociada a esa historia.",
+    "stat1Num": "16",
+    "stat1Label": "pasos del tutorial",
+    "stat2Num": "0 KB",
+    "stat2Label": "JS en una página sin interacción",
+    "stat3Num": "2",
+    "stat3Label": "idiomas, con el i18n del propio framework",
+    "stat4Num": "100%",
+    "stat4Label": "HTML real, indexable sin ejecutar JS",
+    "heroCodeTitle": "src/pages/index.tsx",
+    "featuresKicker": "Ventajas"
   },
   "compat": {
     "title": "Compatibilidad",
