@@ -1,0 +1,6 @@
+[project]
+name = "tutorialnexa"
+version = "0.1.0"
+
+[dependencies]
+ui = "0.1.0"
