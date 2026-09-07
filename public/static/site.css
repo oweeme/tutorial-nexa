@@ -1,18 +1,21 @@
 :root {
-    --nx-color-primary: #C8102E;
-    --nx-color-primary-hover: #A50D25;
-    --nx-color-on-primary: #ffffff;
-    --nx-color-surface: #ffffff;
-    --nx-color-text: #1a1a1a;
-    --nx-color-border: #e8e2d5;
-    --nx-gold: #C99A2E;
-    --nx-gold-bright: #E8C158;
-    --nx-black: #0B0B0C;
-    --nx-green: #1E8F5F;
-    --nx-cream: #FAF7F0;
-    --nx-shadow-sm: 0 2px 8px rgba(20, 15, 5, 0.06);
-    --nx-shadow-md: 0 10px 30px rgba(20, 15, 5, 0.08);
-    --nx-shadow-lg: 0 24px 60px rgba(20, 15, 5, 0.12);
+    /* Prefijo tn- (tutorial-nexa) a propósito: @nexa/ui trae sus propios
+       tokens --nx-* y clases nx-btn/nx-card — usar el mismo prefijo acá
+       pisaría esos tokens en cualquier página que también use @nexa/ui. */
+    --tn-color-primary: #C8102E;
+    --tn-color-primary-hover: #A50D25;
+    --tn-color-on-primary: #ffffff;
+    --tn-color-surface: #ffffff;
+    --tn-color-text: #1a1a1a;
+    --tn-color-border: #e8e2d5;
+    --tn-gold: #C99A2E;
+    --tn-gold-bright: #E8C158;
+    --tn-black: #0B0B0C;
+    --tn-green: #1E8F5F;
+    --tn-cream: #FAF7F0;
+    --tn-shadow-sm: 0 2px 8px rgba(20, 15, 5, 0.06);
+    --tn-shadow-md: 0 10px 30px rgba(20, 15, 5, 0.08);
+    --tn-shadow-lg: 0 24px 60px rgba(20, 15, 5, 0.12);
 }
 
 * { box-sizing: border-box; }
@@ -20,8 +23,8 @@
 html, body {
     margin: 0;
     padding: 0;
-    background: var(--nx-cream);
-    color: var(--nx-color-text);
+    background: var(--tn-cream);
+    color: var(--tn-color-text);
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
@@ -35,7 +38,7 @@ html, body {
     align-items: center;
     justify-content: space-between;
     padding: 0.9rem 2rem;
-    background: var(--nx-black);
+    background: var(--tn-black);
     border-bottom: 1px solid rgba(201, 154, 46, 0.35);
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.25);
     position: sticky;
@@ -58,9 +61,9 @@ html, body {
     font-weight: 500;
     transition: color 0.15s ease;
 }
-.nx-nav a:hover { color: var(--nx-gold-bright); }
+.nx-nav a:hover { color: var(--tn-gold-bright); }
 .nx-nav-github {
-    border: 1px solid var(--nx-gold);
+    border: 1px solid var(--tn-gold);
     padding: 0.4rem 0.9rem;
     border-radius: 7px;
     color: #fff !important;
@@ -68,14 +71,14 @@ html, body {
 .nx-nav-github:hover { background: rgba(201, 154, 46, 0.15); }
 .nx-lang-switch { display: flex; gap: 0.35rem; color: #666; font-size: 0.85rem; }
 .nx-lang-switch a { color: #aaa; font-weight: 600; }
-.nx-lang-switch a:hover { color: var(--nx-gold-bright); }
+.nx-lang-switch a:hover { color: var(--tn-gold-bright); }
 
 /* Hero — layout dividido en dos columnas */
 .nx-hero {
     padding: 4.5rem 2rem;
     background:
         radial-gradient(50% 80% at 15% 20%, rgba(200, 16, 46, 0.18), transparent 60%),
-        linear-gradient(180deg, #17110d 0%, var(--nx-black) 80%);
+        linear-gradient(180deg, #17110d 0%, var(--tn-black) 80%);
     color: #fff;
 }
 .nx-hero-grid {
@@ -89,19 +92,19 @@ html, body {
 .nx-hero-copy { text-align: left; }
 .nx-kicker {
     display: inline-block;
-    color: var(--nx-gold-bright);
+    color: var(--tn-gold-bright);
     text-transform: uppercase;
     letter-spacing: 0.14em;
     font-size: 0.78rem;
     font-weight: 700;
     margin-bottom: 1.1rem;
 }
-.nx-kicker-light { color: var(--nx-color-primary); }
+.nx-kicker-light { color: var(--tn-color-primary); }
 .nx-hero h1 {
     font-size: clamp(2rem, 4.2vw, 3.1rem);
     line-height: 1.15;
     margin: 0 0 1.3rem;
-    background: linear-gradient(90deg, #fff 30%, var(--nx-gold-bright) 100%);
+    background: linear-gradient(90deg, #fff 30%, var(--tn-gold-bright) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -113,23 +116,45 @@ html, body {
     font-size: 1.08rem;
 }
 .nx-hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
-.nx-hero-ctas .nx-btn { font-weight: 600; padding: 0.8rem 1.6rem; font-size: 1rem; }
-.nx-hero-ctas .nx-btn-primary { box-shadow: 0 8px 24px rgba(200, 16, 46, 0.35); }
-.nx-hero-ctas .nx-btn:not(.nx-btn-primary) {
-    background: transparent;
-    border: 1px solid var(--nx-gold);
-    color: var(--nx-gold-bright);
+
+/* Botones del propio sitio — prefijo tn- a propósito, ver nota en :root:
+   nx-btn/nx-btn-primary son clases reales de @nexa/ui (con su propio CSS
+   azul); usarlas acá para el look del sitio pisaría ese estilo apenas
+   una página también cargue @nexa/ui. */
+.tn-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.6rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
 }
-.nx-hero-ctas .nx-btn:not(.nx-btn-primary):hover { background: rgba(201, 154, 46, 0.15); }
+.tn-btn-primary {
+    background: var(--tn-color-primary);
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(200, 16, 46, 0.35);
+}
+.tn-btn-primary:hover { background: var(--tn-color-primary-hover); }
+.tn-btn:not(.tn-btn-primary) {
+    background: transparent;
+    border-color: var(--tn-gold);
+    color: var(--tn-gold-bright);
+}
+.tn-btn:not(.tn-btn-primary):hover { background: rgba(201, 154, 46, 0.15); }
 
 /* Panel de código — como una ventana de editor */
 .nx-hero-panel { min-width: 0; }
 .nx-window {
-    background: var(--nx-black);
+    background: var(--tn-black);
     border: 1px solid #2a2a2a;
     border-radius: 14px;
     overflow: hidden;
-    box-shadow: var(--nx-shadow-lg);
+    box-shadow: var(--tn-shadow-lg);
 }
 .nx-window-bar {
     display: flex;
@@ -153,14 +178,14 @@ html, body {
 }
 
 .nx-page pre {
-    background: var(--nx-black);
+    background: var(--tn-black);
     color: #eee;
     border: 1px solid #262626;
     border-radius: 12px;
     padding: 1.4rem 1.6rem;
     overflow-x: auto;
     font-size: 0.9rem;
-    box-shadow: var(--nx-shadow-lg);
+    box-shadow: var(--tn-shadow-lg);
 }
 .nx-window code, .nx-page code {
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -180,7 +205,7 @@ html, body {
 }
 
 /* Stats strip */
-.nx-stats { background: #fff; border-bottom: 1px solid var(--nx-color-border); padding: 2.75rem 1.5rem; }
+.nx-stats { background: #fff; border-bottom: 1px solid var(--tn-color-border); padding: 2.75rem 1.5rem; }
 .nx-stats-grid {
     max-width: 1000px;
     margin: 0 auto;
@@ -193,7 +218,7 @@ html, body {
     display: block;
     font-size: 2.1rem;
     font-weight: 800;
-    color: var(--nx-color-primary);
+    color: var(--tn-color-primary);
     line-height: 1.1;
 }
 .nx-stat-label { display: block; color: #666; font-size: 0.88rem; margin-top: 0.4rem; }
@@ -202,7 +227,7 @@ html, body {
 .nx-platforms {
     background:
         radial-gradient(circle at 15% 20%, rgba(232, 193, 88, 0.08), transparent 45%),
-        linear-gradient(180deg, #17110d 0%, var(--nx-black) 80%);
+        linear-gradient(180deg, #17110d 0%, var(--tn-black) 80%);
     padding: 4.5rem 1.5rem;
     text-align: center;
 }
@@ -227,16 +252,16 @@ html, body {
     text-align: left;
 }
 .nx-platform-card {
-    background: var(--nx-color-surface);
+    background: var(--tn-color-surface);
     border-radius: 14px;
     padding: 1.6rem 1.4rem;
-    box-shadow: var(--nx-shadow-md);
+    box-shadow: var(--tn-shadow-md);
 }
-.nx-platform-icon { width: 30px; height: 30px; color: var(--nx-color-primary); margin-bottom: 0.9rem; }
-.nx-platform-card h3 { margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--nx-color-text); }
+.nx-platform-icon { width: 30px; height: 30px; color: var(--tn-color-primary); margin-bottom: 0.9rem; }
+.nx-platform-card h3 { margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--tn-color-text); }
 .nx-platform-card p { margin: 0 0 1rem; color: #555; font-size: 0.88rem; line-height: 1.55; }
 .nx-platform-card pre {
-    background: var(--nx-black);
+    background: var(--tn-black);
     border-radius: 8px;
     padding: 0.7rem 0.85rem;
     margin: 0;
@@ -246,7 +271,7 @@ html, body {
 .nx-platforms-cta {
     display: inline-block;
     margin-top: 2.5rem;
-    color: var(--nx-gold-bright);
+    color: var(--tn-gold-bright);
     font-weight: 600;
     text-decoration: none;
 }
@@ -256,33 +281,35 @@ html, body {
 .nx-advantages { max-width: 1100px; margin: 5rem auto; padding: 0 1.5rem; text-align: center; }
 .nx-advantages h2, .nx-story h2 { text-align: center; font-size: 1.9rem; margin: 0 0 2.5rem; }
 .nx-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: left; }
-.nx-grid .nx-card {
+/* tn-feature (no nx-card): nx-card/nx-card-title son clases reales de
+   @nexa/ui — ver nota junto a tn-btn arriba. */
+.nx-grid .tn-feature {
     position: relative;
-    border: 1px solid var(--nx-color-border);
+    border: 1px solid var(--tn-color-border);
     background: #fff;
     border-radius: 14px;
     padding: 1.75rem 1.75rem 1.9rem;
-    box-shadow: var(--nx-shadow-sm);
+    box-shadow: var(--tn-shadow-sm);
     transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
-.nx-grid .nx-card:hover { box-shadow: var(--nx-shadow-md); transform: translateY(-3px); }
-.nx-card-num {
+.nx-grid .tn-feature:hover { box-shadow: var(--tn-shadow-md); transform: translateY(-3px); }
+.tn-feature-num {
     display: block;
     font-size: 0.85rem;
     font-weight: 800;
-    color: var(--nx-gold);
+    color: var(--tn-gold);
     letter-spacing: 0.05em;
     margin-bottom: 0.6rem;
 }
-.nx-grid .nx-card-title {
-    color: var(--nx-color-text);
+.nx-grid .tn-feature-title {
+    color: var(--tn-color-text);
     font-size: 1.08rem;
     margin: 0 0 0.6rem;
     padding-bottom: 0.6rem;
-    border-bottom: 2px solid var(--nx-gold);
+    border-bottom: 2px solid var(--tn-gold);
     display: inline-block;
 }
-.nx-grid .nx-card p { color: #4a4a4a; font-size: 0.95rem; margin: 0; line-height: 1.6; }
+.nx-grid .tn-feature p { color: #4a4a4a; font-size: 0.95rem; margin: 0; line-height: 1.6; }
 
 /* Story */
 .nx-story {
@@ -293,9 +320,9 @@ html, body {
     gap: 1.75rem;
     align-items: center;
     background: #fff;
-    border: 1px solid var(--nx-color-border);
+    border: 1px solid var(--tn-color-border);
     border-radius: 16px;
-    box-shadow: var(--nx-shadow-sm);
+    box-shadow: var(--tn-shadow-sm);
 }
 .nx-story img { flex-shrink: 0; }
 .nx-story h2 { text-align: left; font-size: 1.25rem; margin: 0 0 0.6rem; }
@@ -313,15 +340,15 @@ html, body {
     text-align: center;
     background:
         radial-gradient(55% 70% at 50% 15%, rgba(200, 16, 46, 0.18), transparent 60%),
-        linear-gradient(180deg, #17110d 0%, var(--nx-black) 80%);
+        linear-gradient(180deg, #17110d 0%, var(--tn-black) 80%);
     color: #fff;
 }
 .nx-gate .nx-kicker { margin-bottom: 0.5rem; }
 .nx-gate h1 { font-size: 2.3rem; margin: 0.9rem 0 0.4rem; letter-spacing: 0.01em; color: #fff; }
 .nx-gate-tagline { max-width: 560px; color: #cfcfcf; font-size: 1.02rem; margin: 0 0 2rem; line-height: 1.6; }
-.nx-gate-sep { color: var(--nx-gold); margin: 0 0.3rem; }
+.nx-gate-sep { color: var(--tn-gold); margin: 0 0.3rem; }
 .nx-gate-label {
-    color: var(--nx-gold-bright);
+    color: var(--tn-gold-bright);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-size: 0.75rem;
@@ -329,12 +356,12 @@ html, body {
     margin: 0 0 0.85rem;
 }
 .nx-gate-links { display: flex; gap: 1rem; }
-.nx-gate-links .nx-btn { padding: 0.75rem 1.85rem; font-weight: 600; box-shadow: 0 8px 24px rgba(200, 16, 46, 0.35); }
+.nx-gate-links .tn-btn { padding: 0.75rem 1.85rem; }
 
 /* Footer */
 .nx-footer {
     margin-top: auto;
-    background: var(--nx-black);
+    background: var(--tn-black);
     color: #999;
     text-align: center;
     padding: 2.5rem 1rem;
@@ -351,12 +378,12 @@ html, body {
 .nx-page section {
     margin-top: 1.75rem;
     background: #fff;
-    border: 1px solid var(--nx-color-border);
+    border: 1px solid var(--tn-color-border);
     border-radius: 14px;
     padding: 1.75rem 2rem 2rem;
-    box-shadow: var(--nx-shadow-sm);
+    box-shadow: var(--tn-shadow-sm);
 }
-.nx-page section h2 { font-size: 1.25rem; border-bottom: 2px solid var(--nx-gold); display: inline-block; padding-bottom: 0.25rem; margin-bottom: 0.9rem; }
+.nx-page section h2 { font-size: 1.25rem; border-bottom: 2px solid var(--tn-gold); display: inline-block; padding-bottom: 0.25rem; margin-bottom: 0.9rem; }
 .nx-page section p { color: #333; margin-top: 0.9rem; }
 
 /* Tutorial hub */
@@ -369,16 +396,16 @@ html, body {
     text-decoration: none;
     color: inherit;
     background: #fff;
-    border: 1px solid var(--nx-color-border);
+    border: 1px solid var(--tn-color-border);
     border-radius: 12px;
     padding: 1.15rem 1.4rem 1.3rem;
-    box-shadow: var(--nx-shadow-sm);
+    box-shadow: var(--tn-shadow-sm);
     transition: border-color 0.15s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
-.nx-step-card:hover { border-color: var(--nx-color-primary); box-shadow: var(--nx-shadow-md); transform: translateY(-3px); }
+.nx-step-card:hover { border-color: var(--tn-color-primary); box-shadow: var(--tn-shadow-md); transform: translateY(-3px); }
 .nx-step-num {
     display: inline-block;
-    color: var(--nx-color-primary);
+    color: var(--tn-color-primary);
     font-weight: 700;
     font-size: 0.8rem;
     margin-bottom: 0.35rem;
@@ -407,7 +434,7 @@ html, body {
     flex-direction: column;
     gap: 0.15rem;
     background: #fff;
-    border: 1px solid var(--nx-color-border);
+    border: 1px solid var(--tn-color-border);
     border-radius: 14px;
     padding: 1.1rem;
     margin-top: 3.5rem;
@@ -434,14 +461,14 @@ html, body {
     line-height: 1.35;
 }
 .nx-toc a:hover { background: #f2ede0; }
-.nx-toc a.active { background: var(--nx-color-primary); color: #fff; font-weight: 600; }
-.nx-toc-num { flex-shrink: 0; min-width: 1.3rem; color: var(--nx-gold); font-weight: 700; font-size: 0.76rem; }
+.nx-toc a.active { background: var(--tn-color-primary); color: #fff; font-weight: 600; }
+.nx-toc-num { flex-shrink: 0; min-width: 1.3rem; color: var(--tn-gold); font-weight: 700; font-size: 0.76rem; }
 .nx-toc a.active .nx-toc-num { color: rgba(255, 255, 255, 0.85); }
 
 /* Tutorial page article */
 .nx-tutorial-step .nx-step-badge {
     display: inline-block;
-    background: var(--nx-green);
+    background: var(--tn-green);
     color: #fff;
     font-size: 0.75rem;
     font-weight: 700;
@@ -455,9 +482,9 @@ html, body {
     justify-content: space-between;
     margin-top: 3.5rem;
     padding-top: 1.75rem;
-    border-top: 1px solid var(--nx-color-border);
+    border-top: 1px solid var(--tn-color-border);
 }
-.nx-tutorial-nav a { color: var(--nx-color-primary); text-decoration: none; font-weight: 600; }
+.nx-tutorial-nav a { color: var(--tn-color-primary); text-decoration: none; font-weight: 600; }
 .nx-tutorial-nav a:hover { text-decoration: underline; }
 
 @media (max-width: 900px) {

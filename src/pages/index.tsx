@@ -15,8 +15,8 @@ export default function LanguageGate() {
             </p>
             <p class="nx-gate-label">Elegí tu idioma · Choose your language</p>
             <div class="nx-gate-links">
-                <a class="nx-btn nx-btn-primary" href="/es">Español</a>
-                <a class="nx-btn nx-btn-primary" href="/en">English</a>
+                <a class="tn-btn tn-btn-primary" href="/es">Español</a>
+                <a class="tn-btn tn-btn-primary" href="/en">English</a>
             </div>
         </main>
     );

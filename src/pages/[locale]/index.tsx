@@ -20,8 +20,8 @@ export default function Home() {
                         <h1>{t("home.heroTitle")}</h1>
                         <p class="nx-hero-sub">{t("home.heroSubtitle")}</p>
                         <div class="nx-hero-ctas">
-                            <a class="nx-btn nx-btn-primary" href={`/${params.locale}/tutorial`}>{t("home.ctaTutorial")}</a>
-                            <a class="nx-btn" href="https://github.com/oweeme/tutorial-nexa">{t("home.ctaGithub")}</a>
+                            <a class="tn-btn tn-btn-primary" href={`/${params.locale}/tutorial`}>{t("home.ctaTutorial")}</a>
+                            <a class="tn-btn" href="https://github.com/oweeme/tutorial-nexa">{t("home.ctaGithub")}</a>
                         </div>
                     </div>
                     <div class="nx-hero-panel">
@@ -96,44 +96,44 @@ export default function Home() {
                 <p class="nx-kicker nx-kicker-light">{t("home.featuresKicker")}</p>
                 <h2>{t("home.advTitle")}</h2>
                 <div class="nx-grid">
-                    <div class="nx-card">
-                        <span class="nx-card-num">01</span>
-                        <h3 class="nx-card-title">{t("home.adv1Title")}</h3>
+                    <div class="tn-feature">
+                        <span class="tn-feature-num">01</span>
+                        <h3 class="tn-feature-title">{t("home.adv1Title")}</h3>
                         <p>{t("home.adv1Body")}</p>
                     </div>
-                    <div class="nx-card">
-                        <span class="nx-card-num">02</span>
-                        <h3 class="nx-card-title">{t("home.adv2Title")}</h3>
+                    <div class="tn-feature">
+                        <span class="tn-feature-num">02</span>
+                        <h3 class="tn-feature-title">{t("home.adv2Title")}</h3>
                         <p>{t("home.adv2Body")}</p>
                     </div>
-                    <div class="nx-card">
-                        <span class="nx-card-num">03</span>
-                        <h3 class="nx-card-title">{t("home.adv3Title")}</h3>
+                    <div class="tn-feature">
+                        <span class="tn-feature-num">03</span>
+                        <h3 class="tn-feature-title">{t("home.adv3Title")}</h3>
                         <p>{t("home.adv3Body")}</p>
                     </div>
-                    <div class="nx-card">
-                        <span class="nx-card-num">04</span>
-                        <h3 class="nx-card-title">{t("home.adv4Title")}</h3>
+                    <div class="tn-feature">
+                        <span class="tn-feature-num">04</span>
+                        <h3 class="tn-feature-title">{t("home.adv4Title")}</h3>
                         <p>{t("home.adv4Body")}</p>
                     </div>
-                    <div class="nx-card">
-                        <span class="nx-card-num">05</span>
-                        <h3 class="nx-card-title">{t("home.adv5Title")}</h3>
+                    <div class="tn-feature">
+                        <span class="tn-feature-num">05</span>
+                        <h3 class="tn-feature-title">{t("home.adv5Title")}</h3>
                         <p>{t("home.adv5Body")}</p>
                     </div>
-                    <div class="nx-card">
-                        <span class="nx-card-num">06</span>
-                        <h3 class="nx-card-title">{t("home.adv6Title")}</h3>
+                    <div class="tn-feature">
+                        <span class="tn-feature-num">06</span>
+                        <h3 class="tn-feature-title">{t("home.adv6Title")}</h3>
                         <p>{t("home.adv6Body")}</p>
                     </div>
-                    <div class="nx-card">
-                        <span class="nx-card-num">07</span>
-                        <h3 class="nx-card-title">{t("home.adv7Title")}</h3>
+                    <div class="tn-feature">
+                        <span class="tn-feature-num">07</span>
+                        <h3 class="tn-feature-title">{t("home.adv7Title")}</h3>
                         <p>{t("home.adv7Body")}</p>
                     </div>
-                    <div class="nx-card">
-                        <span class="nx-card-num">08</span>
-                        <h3 class="nx-card-title">{t("home.adv8Title")}</h3>
+                    <div class="tn-feature">
+                        <span class="tn-feature-num">08</span>
+                        <h3 class="tn-feature-title">{t("home.adv8Title")}</h3>
                         <p>{t("home.adv8Body")}</p>
                     </div>
                 </div>
