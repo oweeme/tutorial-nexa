@@ -58,6 +58,12 @@ export default function TutorialStyling() {
                 <p>{t("tutorial.styling.s4Body")}</p>
             </section>
 
+            <section>
+                <h2>{t("tutorial.styling.s5Title")}</h2>
+                <pre><code>{t("tutorial.styling.s5Code")}</code></pre>
+                <p>{t("tutorial.styling.s5Body")}</p>
+            </section>
+
                 <nav class="nx-tutorial-nav">
                     <a href={`/${params.locale}/tutorial/i18n`}>← {t("tutorial.prevLabel")}</a>
                     <a href={`/${params.locale}/tutorial/forms`}>{t("tutorial.nextLabel")} →</a>
