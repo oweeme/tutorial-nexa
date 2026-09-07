@@ -198,6 +198,60 @@ html, body {
 }
 .nx-stat-label { display: block; color: #666; font-size: 0.88rem; margin-top: 0.4rem; }
 
+/* Platforms strip */
+.nx-platforms {
+    background:
+        radial-gradient(circle at 15% 20%, rgba(232, 193, 88, 0.08), transparent 45%),
+        linear-gradient(180deg, #17110d 0%, var(--nx-black) 80%);
+    padding: 4.5rem 1.5rem;
+    text-align: center;
+}
+.nx-platforms h2 {
+    color: #fff;
+    font-size: 1.9rem;
+    max-width: 700px;
+    margin: 0.6rem auto 0.8rem;
+}
+.nx-platforms-sub {
+    color: #b8b0a3;
+    max-width: 620px;
+    margin: 0 auto 2.75rem;
+    line-height: 1.6;
+}
+.nx-platforms-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    text-align: left;
+}
+.nx-platform-card {
+    background: var(--nx-color-surface);
+    border-radius: 14px;
+    padding: 1.6rem 1.4rem;
+    box-shadow: var(--nx-shadow-md);
+}
+.nx-platform-icon { width: 30px; height: 30px; color: var(--nx-color-primary); margin-bottom: 0.9rem; }
+.nx-platform-card h3 { margin: 0 0 0.5rem; font-size: 1.1rem; color: var(--nx-color-text); }
+.nx-platform-card p { margin: 0 0 1rem; color: #555; font-size: 0.88rem; line-height: 1.55; }
+.nx-platform-card pre {
+    background: var(--nx-black);
+    border-radius: 8px;
+    padding: 0.7rem 0.85rem;
+    margin: 0;
+    overflow-x: auto;
+}
+.nx-platform-card code { color: #e8e2d5; font-size: 0.74rem; line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
+.nx-platforms-cta {
+    display: inline-block;
+    margin-top: 2.5rem;
+    color: var(--nx-gold-bright);
+    font-weight: 600;
+    text-decoration: none;
+}
+.nx-platforms-cta:hover { color: #fff; }
+
 /* Advantages grid */
 .nx-advantages { max-width: 1100px; margin: 5rem auto; padding: 0 1.5rem; text-align: center; }
 .nx-advantages h2, .nx-story h2 { text-align: center; font-size: 1.9rem; margin: 0 0 2.5rem; }
