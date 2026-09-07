@@ -23,10 +23,6 @@
       <stop offset="45%" stop-color="#F7CE68"/>
       <stop offset="100%" stop-color="#C99A2E"/>
     </radialGradient>
-    <linearGradient id="koiBody" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FFF6DA"/>
-      <stop offset="100%" stop-color="#F2E2B8"/>
-    </linearGradient>
   </defs>
 
   <!-- anillo de fuego -->
@@ -35,7 +31,7 @@
     <path d="M 86.7 72.3 C 79.7 64.2 76.1 52.4 72.1 46.2 C 81.6 49.2 88.8 58.9 95.3 67.3 Z" fill="url(#flameMid)"/>
     <path d="M 66.5 96.6 C 54.1 90.1 41.7 79.6 37.8 66.6 C 44.8 74.2 59.4 81.0 73.0 85.4 Z" fill="url(#flameOuter)"/>
     <path d="M 62.0 125.0 C 51.5 127.0 39.5 124.2 32.1 124.6 C 39.5 117.9 51.5 116.5 62.0 115.0 Z" fill="url(#flameMid)"/>
-    <path d="M 73.0 154.6 C 66.1 159.5 57.4 163.2 49.8 166.6 C 55.6 158.0 63.9 149.9 66.5 143.4 Z" fill="url(#flameOuter)"/>
+    <path d="M 73.0 154.6 C 61.1 162.1 45.9 167.6 32.7 164.5 C 42.7 162.2 55.9 153.0 66.5 143.4 Z" fill="url(#flameOuter)"/>
     <path d="M 95.3 172.7 C 91.8 182.8 83.4 191.8 80.0 198.4 C 77.9 188.7 82.7 177.6 86.7 167.7 Z" fill="url(#flameMid)"/>
     <path d="M 126.5 178.0 C 127.0 192.0 124.2 208.0 114.9 217.9 C 117.9 208.0 116.5 192.0 113.5 178.0 Z" fill="url(#flameOuter)"/>
     <path d="M 153.3 167.7 C 160.3 175.8 163.9 187.6 167.9 193.8 C 158.4 190.8 151.2 181.1 144.7 172.7 Z" fill="url(#flameMid)"/>
@@ -44,19 +40,6 @@
     <path d="M 167.0 85.4 C 178.9 77.9 194.1 72.4 207.3 75.5 C 197.3 77.8 184.1 87.0 173.5 96.6 Z" fill="url(#flameOuter)"/>
     <path d="M 144.7 67.3 C 148.2 57.2 156.6 48.2 160.0 41.6 C 162.1 51.3 157.3 62.4 153.3 72.3 Z" fill="url(#flameMid)"/>
   </g>
-
-  <!-- trazos de circuito -->
-  <g stroke="#E8C158" stroke-width="1.6" fill="none" opacity="0.85" stroke-linecap="round">
-    <path d="M 150 36 L 150 26 L 160 26"/>
-    <path d="M 196 88 L 206 84 L 206 74"/>
-  </g>
-  <circle cx="160" cy="26" r="2.2" fill="#E8C158"/>
-  <circle cx="206" cy="74" r="2.2" fill="#E8C158"/>
-
-  <!-- koi estilizado, saliendo del fuego hacia el loto -->
-  <path d="M 152 150 C 168 156, 178 172, 172 190 C 167 203, 151 209, 138 202 C 148 196, 154 184, 150 172 C 148 164, 149 156, 152 150 Z" fill="url(#koiBody)"/>
-  <path d="M 172 190 C 180 192, 189 189, 194 181 C 190 190, 191 200, 186 207 C 182 200, 176 195, 172 190 Z" fill="#E8531F"/>
-  <circle cx="156" cy="159" r="2.6" fill="#2A2A2A"/>
 
   <!-- loto -->
   <g>
