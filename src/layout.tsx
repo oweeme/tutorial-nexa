@@ -1,10 +1,12 @@
+export const head = {
+    icon: "/static/logo.svg",
+    appleTouchIcon: "/static/favicon-180.png",
+    stylesheets: ["/static/site.css"]
+};
+
 export default function Layout() {
     return (
         <div class="nx-shell">
-            <link rel="stylesheet" href="/static/site.css" />
-            <link rel="icon" href="/static/logo.svg" type="image/svg+xml" />
-            <link rel="icon" href="/static/favicon-32.png" type="image/png" sizes="32x32" />
-            <link rel="apple-touch-icon" href="/static/favicon-180.png" />
             <header class="nx-header">
                 <a href="/" class="nx-brand">
                     <img src="/static/logo.svg" alt="Nexa" width="42" />
