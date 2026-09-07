@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" role="img" aria-label="Nexa">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Nexa">
   <defs>
     <linearGradient id="flameOuter" x1="0" y1="1" x2="1" y2="0">
       <stop offset="0%" stop-color="#A8121C"/>
@@ -9,15 +9,6 @@
       <stop offset="0%" stop-color="#C81E2C"/>
       <stop offset="55%" stop-color="#F2701E"/>
       <stop offset="100%" stop-color="#FBCB4A"/>
-    </linearGradient>
-    <linearGradient id="flameInner" x1="0" y1="1" x2="0.6" y2="0">
-      <stop offset="0%" stop-color="#D4302C"/>
-      <stop offset="55%" stop-color="#F79420"/>
-      <stop offset="100%" stop-color="#FFE180"/>
-    </linearGradient>
-    <linearGradient id="flameTip" x1="0" y1="1" x2="0.3" y2="0">
-      <stop offset="0%" stop-color="#E2481F"/>
-      <stop offset="100%" stop-color="#FFF3B0"/>
     </linearGradient>
     <linearGradient id="petalOuter" x1="0" y1="1" x2="0.3" y2="0">
       <stop offset="0%" stop-color="#0F5C3B"/>
@@ -32,33 +23,51 @@
       <stop offset="45%" stop-color="#F7CE68"/>
       <stop offset="100%" stop-color="#C99A2E"/>
     </radialGradient>
+    <linearGradient id="koiBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF6DA"/>
+      <stop offset="100%" stop-color="#F2E2B8"/>
+    </linearGradient>
   </defs>
 
-  <!-- ala derecha -->
+  <!-- anillo de fuego -->
   <g>
-    <path d="M 125.9 135.2 C 152.6 129.5 184.0 127.0 205.2 134.1 C 185.8 135.8 155.7 144.2 130.1 154.8 Z" fill="url(#flameOuter)"/>
-    <path d="M 122.7 136.5 C 150.3 114.6 187.2 98.1 216.3 98.1 C 193.8 108.8 161.4 132.4 133.3 153.5 Z" fill="url(#flameMid)"/>
-    <path d="M 120.6 139.8 C 139.9 107.2 168.6 74.5 196.0 61.1 C 177.4 80.7 154.6 117.5 135.4 150.2 Z" fill="url(#flameInner)"/>
-    <path d="M 120.7 143.2 C 126.2 115.0 137.6 84.0 153.3 67.0 C 145.5 86.0 139.3 118.2 135.3 146.8 Z" fill="url(#flameTip)"/>
-  </g>
-  <!-- ala izquierda (espejo) -->
-  <g transform="translate(240,0) scale(-1,1)">
-    <path d="M 125.9 135.2 C 152.6 129.5 184.0 127.0 205.2 134.1 C 185.8 135.8 155.7 144.2 130.1 154.8 Z" fill="url(#flameOuter)"/>
-    <path d="M 122.7 136.5 C 150.3 114.6 187.2 98.1 216.3 98.1 C 193.8 108.8 161.4 132.4 133.3 153.5 Z" fill="url(#flameMid)"/>
-    <path d="M 120.6 139.8 C 139.9 107.2 168.6 74.5 196.0 61.1 C 177.4 80.7 154.6 117.5 135.4 150.2 Z" fill="url(#flameInner)"/>
-    <path d="M 120.7 143.2 C 126.2 115.0 137.6 84.0 153.3 67.0 C 145.5 86.0 139.3 118.2 135.3 146.8 Z" fill="url(#flameTip)"/>
+    <path d="M 113.5 62.0 C 113.0 48.0 115.8 32.0 125.1 22.1 C 122.1 32.0 123.5 48.0 126.5 62.0 Z" fill="url(#flameOuter)"/>
+    <path d="M 86.7 72.3 C 79.7 64.2 76.1 52.4 72.1 46.2 C 81.6 49.2 88.8 58.9 95.3 67.3 Z" fill="url(#flameMid)"/>
+    <path d="M 66.5 96.6 C 54.1 90.1 41.7 79.6 37.8 66.6 C 44.8 74.2 59.4 81.0 73.0 85.4 Z" fill="url(#flameOuter)"/>
+    <path d="M 62.0 125.0 C 51.5 127.0 39.5 124.2 32.1 124.6 C 39.5 117.9 51.5 116.5 62.0 115.0 Z" fill="url(#flameMid)"/>
+    <path d="M 73.0 154.6 C 66.1 159.5 57.4 163.2 49.8 166.6 C 55.6 158.0 63.9 149.9 66.5 143.4 Z" fill="url(#flameOuter)"/>
+    <path d="M 95.3 172.7 C 91.8 182.8 83.4 191.8 80.0 198.4 C 77.9 188.7 82.7 177.6 86.7 167.7 Z" fill="url(#flameMid)"/>
+    <path d="M 126.5 178.0 C 127.0 192.0 124.2 208.0 114.9 217.9 C 117.9 208.0 116.5 192.0 113.5 178.0 Z" fill="url(#flameOuter)"/>
+    <path d="M 153.3 167.7 C 160.3 175.8 163.9 187.6 167.9 193.8 C 158.4 190.8 151.2 181.1 144.7 172.7 Z" fill="url(#flameMid)"/>
+    <path d="M 173.5 143.4 C 185.9 149.9 198.3 160.4 202.2 173.4 C 195.2 165.8 180.6 159.0 167.0 154.6 Z" fill="url(#flameOuter)"/>
+    <path d="M 178.0 115.0 C 188.5 113.0 200.5 115.8 207.9 115.4 C 200.5 122.1 188.5 123.5 178.0 125.0 Z" fill="url(#flameMid)"/>
+    <path d="M 167.0 85.4 C 178.9 77.9 194.1 72.4 207.3 75.5 C 197.3 77.8 184.1 87.0 173.5 96.6 Z" fill="url(#flameOuter)"/>
+    <path d="M 144.7 67.3 C 148.2 57.2 156.6 48.2 160.0 41.6 C 162.1 51.3 157.3 62.4 153.3 72.3 Z" fill="url(#flameMid)"/>
   </g>
 
-  <!-- loto: pétalos -->
+  <!-- trazos de circuito -->
+  <g stroke="#E8C158" stroke-width="1.6" fill="none" opacity="0.85" stroke-linecap="round">
+    <path d="M 150 36 L 150 26 L 160 26"/>
+    <path d="M 196 88 L 206 84 L 206 74"/>
+  </g>
+  <circle cx="160" cy="26" r="2.2" fill="#E8C158"/>
+  <circle cx="206" cy="74" r="2.2" fill="#E8C158"/>
+
+  <!-- koi estilizado, saliendo del fuego hacia el loto -->
+  <path d="M 152 150 C 168 156, 178 172, 172 190 C 167 203, 151 209, 138 202 C 148 196, 154 184, 150 172 C 148 164, 149 156, 152 150 Z" fill="url(#koiBody)"/>
+  <path d="M 172 190 C 180 192, 189 189, 194 181 C 190 190, 191 200, 186 207 C 182 200, 176 195, 172 190 Z" fill="#E8531F"/>
+  <circle cx="156" cy="159" r="2.6" fill="#2A2A2A"/>
+
+  <!-- loto -->
   <g>
-    <path d="M120 178 C 94 173, 74 154, 70 128 C 70 121, 73 116, 78 113 C 91 129, 105 150, 120 164 Z" fill="url(#petalOuter)"/>
-    <path d="M120 181 C 146 176, 166 157, 170 131 C 170 124, 167 119, 162 116 C 149 132, 135 153, 120 167 Z" fill="url(#petalOuter)"/>
-    <path d="M120 174 C 100 166, 87 147, 86 124 C 87 117, 90 113, 95 111 C 104 128, 112 149, 120 162 Z" fill="url(#petalInner)"/>
-    <path d="M120 174 C 140 166, 153 147, 154 124 C 153 117, 150 113, 145 111 C 136 128, 128 149, 120 162 Z" fill="url(#petalInner)"/>
-    <path d="M120 170 C 111 153, 107 134, 110 115 C 112 108, 116 104, 120 102 C 124 104, 128 108, 130 115 C 133 134, 129 153, 120 170 Z" fill="url(#petalInner)"/>
+    <path d="M120 158 C 94 153, 74 134, 70 108 C 70 101, 73 96, 78 93 C 91 109, 105 130, 120 144 Z" fill="url(#petalOuter)"/>
+    <path d="M120 161 C 146 156, 166 137, 170 111 C 170 104, 167 99, 162 96 C 149 112, 135 133, 120 147 Z" fill="url(#petalOuter)"/>
+    <path d="M120 154 C 100 146, 87 127, 86 104 C 87 97, 90 93, 95 91 C 104 108, 112 129, 120 142 Z" fill="url(#petalInner)"/>
+    <path d="M120 154 C 140 146, 153 127, 154 104 C 153 97, 150 93, 145 91 C 136 108, 128 129, 120 142 Z" fill="url(#petalInner)"/>
+    <path d="M120 150 C 111 133, 107 114, 110 95 C 112 88, 116 84, 120 82 C 124 84, 128 88, 130 95 C 133 114, 129 133, 120 150 Z" fill="url(#petalInner)"/>
   </g>
 
   <!-- joya central -->
-  <circle cx="120" cy="141" r="14" fill="url(#jewel)"/>
-  <circle cx="115" cy="135" r="4.5" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="120" cy="121" r="13" fill="url(#jewel)"/>
+  <circle cx="115" cy="115" r="4.2" fill="#FFFFFF" opacity="0.8"/>
 </svg>

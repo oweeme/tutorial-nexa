@@ -4,7 +4,7 @@ export default function Layout() {
             <link rel="stylesheet" href="/static/site.css" />
             <link rel="icon" href="/static/logo.svg" type="image/svg+xml" />
             <header class="nx-header">
-                <a href={`/${params.locale}`} class="nx-brand">
+                <a href="/" class="nx-brand">
                     <img src="/static/logo.svg" alt="Nexa" width="42" />
                     <span class="nx-brand-word">nexa</span>
                 </a>
