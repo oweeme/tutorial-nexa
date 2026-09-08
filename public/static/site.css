@@ -164,10 +164,10 @@ html, body {
     background: #161616;
     border-bottom: 1px solid #262626;
 }
-.nx-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-.nx-dot-r { background: #e0524a; }
-.nx-dot-y { background: #e0b64a; }
-.nx-dot-g { background: #52b565; }
+/* Tux + logo de OweeLinux en vez de los "traffic lights" de macOS —
+   este framework (y el resto de mis herramientas) se hacen en Linux. */
+.nx-tux-icon { width: 18px; height: 18px; flex-shrink: 0; }
+.nx-oweelinux-icon { display: block; border-radius: 50%; flex-shrink: 0; }
 .nx-window-title { margin-left: 0.6rem; color: #888; font-size: 0.8rem; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
 .nx-window pre {
     margin: 0;

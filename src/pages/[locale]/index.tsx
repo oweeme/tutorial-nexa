@@ -27,9 +27,18 @@ export default function Home() {
                     <div class="nx-hero-panel">
                         <div class="nx-window">
                             <div class="nx-window-bar">
-                                <span class="nx-dot nx-dot-r"></span>
-                                <span class="nx-dot nx-dot-y"></span>
-                                <span class="nx-dot nx-dot-g"></span>
+                                <svg class="nx-tux-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <ellipse cx="12" cy="13" rx="7" ry="9" fill="#f4f4f4"></ellipse>
+                                    <ellipse cx="12" cy="14" rx="4.2" ry="6.5" fill="#111111"></ellipse>
+                                    <circle cx="9.3" cy="7" r="1.3" fill="#111111"></circle>
+                                    <circle cx="14.7" cy="7" r="1.3" fill="#111111"></circle>
+                                    <circle cx="9.3" cy="7.3" r="0.6" fill="#f4f4f4"></circle>
+                                    <circle cx="14.7" cy="7.3" r="0.6" fill="#f4f4f4"></circle>
+                                    <polygon points="10.7,9 13.3,9 12,10.8" fill="#E8C158"></polygon>
+                                    <polygon points="8,21.5 10.2,21.5 9.5,23" fill="#E8C158"></polygon>
+                                    <polygon points="13.8,21.5 16,21.5 14.5,23" fill="#E8C158"></polygon>
+                                </svg>
+                                <img src="/static/oweelinux-logo.png" alt="OweeLinux" width="18" height="18" class="nx-oweelinux-icon" />
                                 <span class="nx-window-title">{t("home.heroCodeTitle")}</span>
                             </div>
                             <pre><code>{t("home.codeSample")}</code></pre>
