@@ -81,6 +81,10 @@ export default function TutorialHub() {
                     <span class="nx-step-num">{t("tutorial.production.step")}</span>
                     <h3>{t("tutorial.production.title")}</h3>
                 </a>
+                <a class="nx-step-card" href={`/${params.locale}/tutorial/ui-components`}>
+                    <span class="nx-step-num">{t("tutorial.uiComponents.step")}</span>
+                    <h3>{t("tutorial.uiComponents.title")}</h3>
+                </a>
             </div>
         </main>
     );

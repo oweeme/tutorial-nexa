@@ -369,6 +369,32 @@
       "s2Code": "nexa test\n# Compiling the project before running tests...\n# Running `npm test`...",
       "s3Code": "nexa add nginx\n# Generates deploy/nginx.conf — gzip, security headers,\n# a year-long immutable cache only for hashed files.",
       "s4Code": "location /articles/ {\n    proxy_pass http://127.0.0.1:4321;\n    proxy_set_header Host $host;\n}\n# nexa preview running behind it, serving that route on the fly"
+    },
+    "uiComponents": {
+      "step": "Step 18",
+      "title": "More @nexa/ui components: Table, Tabs, Dropdown and a reactive search box",
+      "intro": "Nine purely visual components, and six with real client-side state — without any of the latter needing an island (Step 9). Every example in this chapter is functional exactly as written: each one was tested in a real browser before being written down here.",
+      "s1Title": "Table, Badge and Avatar",
+      "s1Body": "nx-table-wrap adds horizontal scroll on small screens; nx-table-zebra alternates row backgrounds. nx-badge and nx-avatar are CSS-only — none of the three needs JavaScript yet (that comes in the sort/filter section below).",
+      "s1Code": "<div class=\"nx-table-wrap\">\n    <table class=\"nx-table nx-table-zebra\">\n        <thead><tr><th>Client</th><th>Status</th></tr></thead>\n        <tbody>\n            <tr>\n                <td><span class=\"nx-avatar nx-avatar-sm\">HM</span> Hector M.</td>\n                <td><span class=\"nx-badge nx-badge-success\">Paid</span></td>\n            </tr>\n            <tr>\n                <td><span class=\"nx-avatar nx-avatar-sm\">AR</span> Ana R.</td>\n                <td><span class=\"nx-badge nx-badge-warning\">Pending</span></td>\n            </tr>\n        </tbody>\n    </table>\n</div>",
+      "s2Title": "Breadcrumbs, Alert and Divider",
+      "s2Body": "nx-breadcrumbs puts the \"/\" between steps with plain CSS (::after) — no need to write it by hand. aria-current=\"page\" marks the current step. nx-alert has three color variants (success/warning/danger) via the left border.",
+      "s2Code": "<nav class=\"nx-breadcrumbs\" aria-label=\"breadcrumb\">\n    <a class=\"nx-breadcrumbs-link\" href=\"/\">Home</a>\n    <a class=\"nx-breadcrumbs-link\" href=\"/orders\">Orders</a>\n    <span class=\"nx-breadcrumbs-link\" aria-current=\"page\">#1024</span>\n</nav>\n\n<div class=\"nx-alert nx-alert-warning\">\n    <p class=\"nx-alert-title\">Low stock</p>\n    <p>Only 3 units left.</p>\n</div>\n\n<hr class=\"nx-divider\" />",
+      "s3Title": "Tooltip, Progress and Skeleton",
+      "s3Body": "nx-tooltip-content shows on :hover/:focus-within — keyboard accessible, zero lines of JS. nx-progress-bar needs its width set by hand (fixed, or dynamic with data.*). nx-skeleton is an animated placeholder while something loads.",
+      "s3Code": "<span class=\"nx-tooltip\">\n    Hover here\n    <span class=\"nx-tooltip-content\">Extra info, no JavaScript</span>\n</span>\n\n<div class=\"nx-progress\">\n    <div class=\"nx-progress-bar\" style={`width: ${data.percent}%`}></div>\n</div>\n\n<div class=\"nx-skeleton\" style=\"width: 200px; height: 1rem;\"></div>",
+      "s4Title": "Tabs, no island needed",
+      "s4Body": "ui.selectTab(event) reads which button was clicked (event.currentTarget) and its data-tab, finds the nearest .nx-tab-group, and does the rest — no need to pass it any element by hand. The same one-line selectTab function works for every button in every tab group on the page.",
+      "s5Title": "Accordion, with an optional exclusive mode",
+      "s5Body": "By default several items can be open at once. With data-exclusive=\"true\" on the containing .nx-accordion, opening one closes the rest — useful for an FAQ where only one answer makes sense to read at a time.",
+      "s6Title": "Dropdown, closed by an outside click or Escape",
+      "s6Body": "Same as Dialog (Step 7), but without trapping focus — a dropdown doesn't block the rest of the page. Picking an option updates the trigger's text, marks aria-selected on the chosen option, and closes the menu on its own.",
+      "s7Title": "A search box inside a table (and sorting it by column)",
+      "s7Body": "ui.filterTable(table, query) hides tbody rows whose text doesn't match — this is the \"search inside the table\" piece. ui.sortTable(event) sorts by the clicked <th>'s column, toggling ascending/descending, comparing as numbers when both cells are numeric (10 before 20, not \"10\" before \"2\" by text order). Both run client-side, over rows the server already rendered — no re-fetch, and no island.",
+      "s8Title": "A full page-wide search box, as a reactive component",
+      "s8Body": "ui.createPageSearch(container) filters any data-searchable element inside container, with a real Signal from @nexa/reactivity underneath (the same Step 4 of this tutorial) — not a simulation. One real gotcha: the chunk Nexa extracts from onSearchInput is an isolated module, so it can't depend on a variable declared elsewhere in the page (a file-level let doesn't travel with the chunk). That's why the controller is hung off the <input> itself (input.pageSearch), which does persist between one keystroke and the next because it's the same DOM element.",
+      "s9Title": "Island, or a ui function? How to decide",
+      "s9Body": "If the state is local to one concrete widget and can be modeled as \"directly manipulate the DOM that's already on the page\" (open/close, mark an active tab, sort/filter already-rendered rows), it's a ui function + onClick/onInput — no Virtual DOM, no re-render, the usual progressive activation. Reserve an island (Step 9) for when you genuinely need a full framework with its own lifecycle (Vue, React) or real composition with deep props/children — never as the default choice for \"this button does something\". The six components in this chapter (Tabs, Accordion, Dropdown, Table sort/filter, and the page search box) are proof you can go quite far without opening that door."
     }
   }
 }

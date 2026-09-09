@@ -28,6 +28,7 @@ export default function TutorialProduction() {
                 <a href={`/${params.locale}/tutorial/performance`}><span class="nx-toc-num">15</span>{t("tutorial.performance.title")}</a>
                 <a href={`/${params.locale}/tutorial/native`}><span class="nx-toc-num">16</span>{t("tutorial.native.title")}</a>
                 <a class="active" href={`/${params.locale}/tutorial/production`}><span class="nx-toc-num">17</span>{t("tutorial.production.title")}</a>
+                <a href={`/${params.locale}/tutorial/ui-components`}><span class="nx-toc-num">18</span>{t("tutorial.uiComponents.title")}</a>
             </nav>
             <main class="nx-page nx-tutorial-step">
                 <span class="nx-step-badge">{t("tutorial.production.step")}</span>
@@ -65,7 +66,7 @@ export default function TutorialProduction() {
 
                 <nav class="nx-tutorial-nav">
                     <a href={`/${params.locale}/tutorial/native`}>← {t("tutorial.prevLabel")}</a>
-                    <a href={`/${params.locale}`}>{t("nav.home")} →</a>
+                    <a href={`/${params.locale}/tutorial/ui-components`}>{t("tutorial.nextLabel")} →</a>
                 </nav>
             </main>
         </div>

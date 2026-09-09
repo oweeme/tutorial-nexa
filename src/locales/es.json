@@ -369,6 +369,32 @@
       "s2Code": "nexa test\n# Compilando el proyecto antes de correr los tests...\n# Corriendo `npm test`...",
       "s3Code": "nexa add nginx\n# Genera deploy/nginx.conf — gzip, cabeceras de seguridad,\n# cache immutable de un año solo para archivos con hash.",
       "s4Code": "location /articles/ {\n    proxy_pass http://127.0.0.1:4321;\n    proxy_set_header Host $host;\n}\n# nexa preview corriendo detrás, sirviendo esa ruta al vuelo"
+    },
+    "uiComponents": {
+      "step": "Paso 18",
+      "title": "Más componentes de @nexa/ui: Table, Tabs, Dropdown y un buscador reactivo",
+      "intro": "Nueve componentes puramente visuales, y seis con estado real en cliente — sin que ninguno de estos últimos necesite una isla (Paso 9). Todos los ejemplos de este capítulo son funcionales tal cual están escritos: cada uno se probó en un navegador real antes de escribirse acá.",
+      "s1Title": "Table, Badge y Avatar",
+      "s1Body": "nx-table-wrap agrega scroll horizontal en pantallas chicas; nx-table-zebra alterna el fondo de las filas. nx-badge y nx-avatar son solo CSS — ninguno de los tres necesita JavaScript todavía (eso viene en la sección de ordenar/filtrar, más abajo).",
+      "s1Code": "<div class=\"nx-table-wrap\">\n    <table class=\"nx-table nx-table-zebra\">\n        <thead><tr><th>Cliente</th><th>Estado</th></tr></thead>\n        <tbody>\n            <tr>\n                <td><span class=\"nx-avatar nx-avatar-sm\">HM</span> Hector M.</td>\n                <td><span class=\"nx-badge nx-badge-success\">Pagado</span></td>\n            </tr>\n            <tr>\n                <td><span class=\"nx-avatar nx-avatar-sm\">AR</span> Ana R.</td>\n                <td><span class=\"nx-badge nx-badge-warning\">Pendiente</span></td>\n            </tr>\n        </tbody>\n    </table>\n</div>",
+      "s2Title": "Breadcrumbs, Alert y Divider",
+      "s2Body": "nx-breadcrumbs pone el \"/\" entre pasos solo con CSS (::after) — no hace falta escribirlo a mano. aria-current=\"page\" marca cuál es el paso actual. nx-alert tiene tres variantes de color (success/warning/danger) vía el borde izquierdo.",
+      "s2Code": "<nav class=\"nx-breadcrumbs\" aria-label=\"breadcrumb\">\n    <a class=\"nx-breadcrumbs-link\" href=\"/\">Inicio</a>\n    <a class=\"nx-breadcrumbs-link\" href=\"/pedidos\">Pedidos</a>\n    <span class=\"nx-breadcrumbs-link\" aria-current=\"page\">#1024</span>\n</nav>\n\n<div class=\"nx-alert nx-alert-warning\">\n    <p class=\"nx-alert-title\">Stock bajo</p>\n    <p>Quedan 3 unidades.</p>\n</div>\n\n<hr class=\"nx-divider\" />",
+      "s3Title": "Tooltip, Progress y Skeleton",
+      "s3Body": "nx-tooltip-content se muestra con :hover/:focus-within — accesible con teclado, sin una línea de JS. nx-progress-bar necesita su width puesto a mano (fijo, o dinámico con data.*). nx-skeleton es un placeholder animado mientras algo carga.",
+      "s3Code": "<span class=\"nx-tooltip\">\n    Pasá el mouse acá\n    <span class=\"nx-tooltip-content\">Info extra, sin JavaScript</span>\n</span>\n\n<div class=\"nx-progress\">\n    <div class=\"nx-progress-bar\" style={`width: ${data.percent}%`}></div>\n</div>\n\n<div class=\"nx-skeleton\" style=\"width: 200px; height: 1rem;\"></div>",
+      "s4Title": "Tabs, sin isla",
+      "s4Body": "ui.selectTab(event) lee de qué botón vino el click (event.currentTarget) y su data-tab, encuentra el .nx-tab-group más cercano, y hace el resto — no hace falta pasarle ningún elemento a mano. La misma función selectTab de una línea sirve para todos los botones de todos los grupos de pestañas de la página.",
+      "s5Title": "Accordion, con modo exclusivo opcional",
+      "s5Body": "Por defecto varios items pueden estar abiertos a la vez. Con data-exclusive=\"true\" en el .nx-accordion contenedor, abrir uno cierra los demás — útil para un FAQ donde solo tiene sentido leer una respuesta a la vez.",
+      "s6Title": "Dropdown, cerrado con click afuera o Escape",
+      "s6Body": "Igual que Dialog (Paso 7), pero sin atrapar el foco — un dropdown no bloquea el resto de la página. Elegir una opción actualiza el texto del trigger, marca aria-selected en la opción elegida, y cierra el menú solo.",
+      "s7Title": "Un buscador dentro de una tabla (y ordenarla por columna)",
+      "s7Body": "ui.filterTable(table, query) oculta filas de tbody cuyo texto no matchea — es el buscador \"dentro de la tabla\". ui.sortTable(event) ordena por la columna del <th> clickeado, alternando ascendente/descendente, y compara como número si ambas celdas lo son (10 antes que 20, no \"10\" antes que \"2\" por orden de texto). Las dos operan client-side, sobre filas que el servidor ya renderizó — sin volver a pedir nada al backend, y sin ninguna isla.",
+      "s8Title": "Un buscador de página completa, como componente reactivo",
+      "s8Body": "ui.createPageSearch(container) filtra cualquier elemento data-searchable dentro de container, con un Signal real de @nexa/reactivity por debajo (el mismo Paso 4 de este tutorial) — no una simulación. Ojo con un detalle real: el chunk que Nexa extrae de onSearchInput es un módulo aislado, así que no puede depender de una variable declarada aparte en la página (un let a nivel de archivo no viaja con el chunk). Por eso el controlador se cuelga del propio <input> (input.pageSearch), que sí persiste entre una tecleada y la siguiente porque es el mismo elemento del DOM.",
+      "s9Title": "¿Isla, o función de ui? Cómo decidir",
+      "s9Body": "Si el estado es local a un widget concreto y se puede modelar como \"manipular directamente el DOM que ya está en la página\" (abrir/cerrar, marcar una pestaña activa, ordenar/filtrar filas ya renderizadas), es una función de ui + onClick/onInput — sin Virtual DOM, sin re-render, activación progresiva de siempre. Una isla (Paso 9) queda reservada para cuando de verdad hace falta un framework completo con su propio ciclo de vida (Vue, React) o composición real con props/children profundos — nunca como opción por defecto para \"este botón hace algo\". Los seis componentes de este capítulo (Tabs, Accordion, Dropdown, orden/filtro de Table, y el buscador de página) son la prueba de que se puede llegar bastante lejos sin abrir esa puerta."
     }
   }
 }
