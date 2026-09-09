@@ -101,6 +101,30 @@ export default function Home() {
                 <a class="nx-platforms-cta" href={`/${params.locale}/tutorial/native`}>{t("home.platformsCta")}</a>
             </section>
 
+            <section class="nx-compare">
+                <p class="nx-kicker">{t("home.compareKicker")}</p>
+                <h2>{t("home.compareTitle")}</h2>
+                <p class="nx-compare-sub">{t("home.compareSubtitle")}</p>
+                <div class="nx-compare-grid">
+                    <div class="nx-compare-row">
+                        <h3>{t("home.compareRow1Title")}</h3>
+                        <p class="nx-compare-them">{t("home.compareRow1Them")}</p>
+                        <p class="nx-compare-us">{t("home.compareRow1Us")}</p>
+                    </div>
+                    <div class="nx-compare-row">
+                        <h3>{t("home.compareRow2Title")}</h3>
+                        <p class="nx-compare-them">{t("home.compareRow2Them")}</p>
+                        <p class="nx-compare-us">{t("home.compareRow2Us")}</p>
+                    </div>
+                    <div class="nx-compare-row">
+                        <h3>{t("home.compareRow3Title")}</h3>
+                        <p class="nx-compare-them">{t("home.compareRow3Them")}</p>
+                        <p class="nx-compare-us">{t("home.compareRow3Us")}</p>
+                    </div>
+                </div>
+                <p class="nx-compare-note">{t("home.compareNote")}</p>
+            </section>
+
             <section class="nx-advantages">
                 <p class="nx-kicker nx-kicker-light">{t("home.featuresKicker")}</p>
                 <h2>{t("home.advTitle")}</h2>

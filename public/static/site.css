@@ -277,6 +277,40 @@ html, body {
 }
 .nx-platforms-cta:hover { color: #fff; }
 
+/* Compare strip: Nexa vs. frameworks que renderizan ejecutando código */
+.nx-compare { max-width: 1100px; margin: 5rem auto; padding: 0 1.5rem; text-align: center; }
+.nx-compare h2 { text-align: center; font-size: 1.9rem; margin: 0.6rem 0 0.8rem; }
+.nx-compare-sub { max-width: 680px; margin: 0 auto 2.75rem; color: #555; line-height: 1.65; }
+.nx-compare-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    text-align: left;
+}
+.nx-compare-row {
+    border: 1px solid var(--tn-color-border);
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.5rem 1.6rem;
+    box-shadow: var(--tn-shadow-sm);
+}
+.nx-compare-row h3 { margin: 0 0 0.6rem; font-size: 1.02rem; color: var(--tn-color-text); }
+.nx-compare-row p { margin: 0 0 0.6rem; font-size: 0.88rem; color: #555; line-height: 1.6; }
+.nx-compare-row p:last-child { margin-bottom: 0; }
+.nx-compare-row .nx-compare-them { color: #8a2a2a; }
+.nx-compare-row .nx-compare-us { color: var(--tn-green); }
+.nx-compare-note {
+    max-width: 780px;
+    margin: 2.5rem auto 0;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    background: var(--tn-cream);
+    border: 1px solid var(--tn-color-border);
+    color: #444;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
 /* Advantages grid */
 .nx-advantages { max-width: 1100px; margin: 5rem auto; padding: 0 1.5rem; text-align: center; }
 .nx-advantages h2, .nx-story h2 { text-align: center; font-size: 1.9rem; margin: 0 0 2.5rem; }

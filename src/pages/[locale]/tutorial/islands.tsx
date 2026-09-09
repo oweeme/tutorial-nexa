@@ -35,6 +35,12 @@ export default function TutorialIslands() {
                 <p>{t("tutorial.islands.intro")}</p>
 
             <section>
+                <h2>{t("tutorial.islands.compareTitle")}</h2>
+                <p>{t("tutorial.islands.compareBody1")}</p>
+                <p>{t("tutorial.islands.compareBody2")}</p>
+            </section>
+
+            <section>
                 <h2>{t("tutorial.islands.s1Title")}</h2>
                 <pre><code>{t("tutorial.islands.s1Code")}</code></pre>
                 <p>{t("tutorial.islands.s1Body")}</p>
@@ -56,6 +62,12 @@ export default function TutorialIslands() {
                 <h2>{t("tutorial.islands.s4Title")}</h2>
                 <pre><code>{t("tutorial.islands.s4Code")}</code></pre>
                 <p>{t("tutorial.islands.s4Body")}</p>
+            </section>
+
+            <section>
+                <h2>{t("tutorial.islands.s5Title")}</h2>
+                <pre><code>{t("tutorial.islands.s5Code")}</code></pre>
+                <p>{t("tutorial.islands.s5Body")}</p>
             </section>
 
                 <nav class="nx-tutorial-nav">
