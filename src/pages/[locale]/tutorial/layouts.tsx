@@ -52,6 +52,12 @@ export default function TutorialLayouts() {
                 <p>{t("tutorial.layouts.s3Body")}</p>
             </section>
 
+            <section>
+                <h2>{t("tutorial.layouts.s4Title")}</h2>
+                <pre><code>{t("tutorial.layouts.s4Code")}</code></pre>
+                <p>{t("tutorial.layouts.s4Body")}</p>
+            </section>
+
                 <nav class="nx-tutorial-nav">
                     <a href={`/${params.locale}/tutorial/realtime`}>← {t("tutorial.prevLabel")}</a>
                     <a href={`/${params.locale}/tutorial/pwa`}>{t("tutorial.nextLabel")} →</a>

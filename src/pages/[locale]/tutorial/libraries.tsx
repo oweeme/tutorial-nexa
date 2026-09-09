@@ -58,6 +58,12 @@ export default function TutorialLibraries() {
                 <p>{t("tutorial.libraries.s4Body")}</p>
             </section>
 
+            <section>
+                <h2>{t("tutorial.libraries.s5Title")}</h2>
+                <pre><code>{t("tutorial.libraries.s5Code")}</code></pre>
+                <p>{t("tutorial.libraries.s5Body")}</p>
+            </section>
+
                 <nav class="nx-tutorial-nav">
                     <a href={`/${params.locale}/tutorial/islands`}>← {t("tutorial.prevLabel")}</a>
                     <a href={`/${params.locale}/tutorial/realtime`}>{t("tutorial.nextLabel")} →</a>

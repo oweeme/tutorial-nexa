@@ -54,7 +54,13 @@ export default function TutorialProduction() {
 
             <section>
                 <h2>{t("tutorial.production.s4Title")}</h2>
+                <pre><code>{t("tutorial.production.s4Code")}</code></pre>
                 <p>{t("tutorial.production.s4Body")}</p>
+            </section>
+
+            <section>
+                <h2>{t("tutorial.production.s5Title")}</h2>
+                <p>{t("tutorial.production.s5Body")}</p>
             </section>
 
                 <nav class="nx-tutorial-nav">

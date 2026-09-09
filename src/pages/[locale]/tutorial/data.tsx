@@ -52,6 +52,12 @@ export default function TutorialData() {
                 <p>{t("tutorial.data.s3Body")}</p>
             </section>
 
+            <section>
+                <h2>{t("tutorial.data.s4Title")}</h2>
+                <pre><code>{t("tutorial.data.s4Code")}</code></pre>
+                <p>{t("tutorial.data.s4Body")}</p>
+            </section>
+
                 <nav class="nx-tutorial-nav">
                     <a href={`/${params.locale}/tutorial/routing`}>← {t("tutorial.prevLabel")}</a>
                     <a href={`/${params.locale}/tutorial/seo`}>{t("tutorial.nextLabel")} →</a>

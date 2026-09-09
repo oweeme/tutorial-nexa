@@ -52,6 +52,12 @@ export default function TutorialI18n() {
                 <p>{t("tutorial.i18n.s3Body")}</p>
             </section>
 
+            <section>
+                <h2>{t("tutorial.i18n.s4Title")}</h2>
+                <pre><code>{"// src/locales/<locale>.json\n{ \"profile\": { \"donateTo\": \"Support {name}\" } }\n\n<p>{t(\"profile.donateTo\", { name: data.creatorName })}</p>"}</code></pre>
+                <p>{t("tutorial.i18n.s4Body")}</p>
+            </section>
+
                 <nav class="nx-tutorial-nav">
                     <a href={`/${params.locale}/tutorial/seo`}>← {t("tutorial.prevLabel")}</a>
                     <a href={`/${params.locale}/tutorial/styling`}>{t("tutorial.nextLabel")} →</a>

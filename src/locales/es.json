@@ -137,9 +137,12 @@
       "s2Body": "data.* está disponible en el cuerpo JSX, en seo y en schema — resuelto en tiempo de build o al vuelo, según el comando.",
       "s3Title": "Pre-renderizar rutas dinámicas",
       "s3Body": "Si la página también declara paths (misma forma que load), nexa build pide esa lista y genera un index.html real por cada combinación — HTML estático de verdad, sin servidor Nexa corriendo en producción.",
+      "s4Title": "Iterar listas con <For>",
+      "s4Body": "Un catálogo, un listado de artículos, un directorio — <For> es un patrón sintáctico más, reconocido igual que t() u onClick, nunca un .map() arbitrario: each solo acepta data.x/params.x, y el callback devuelve un único elemento JSX por ítem. Antes de esto, la única forma de mostrar una lista era dentro de una isla, perdiendo el HTML real que es la razón de ser de Nexa — con <For>, cada <li> es contenido indexable desde el primer byte.",
       "s1Code": "export const load = { url: \"/products/:slug\" };",
       "s2Code": "export default function ProductPage() {\n    return (\n        <article>\n            <h1>{data.name}</h1>\n            <p>{data.price}</p>\n        </article>\n    );\n}",
-      "s3Code": "export const paths = { url: \"/products\" };\n// nexa build pide /products, espera [{\"slug\":\"iphone-17\"}, ...]\n// y genera dist/products/iphone-17/index.html real"
+      "s3Code": "export const paths = { url: \"/products\" };\n// nexa build pide /products, espera [{\"slug\":\"iphone-17\"}, ...]\n// y genera dist/products/iphone-17/index.html real",
+      "s4Code": "export const load = { url: \"/products\" };\n\nexport default function Catalog() {\n    return (\n        <ul>\n            <For each={data.items}>\n                {(item) => (\n                    <li><a href={`/products/${item.slug}`}>{item.name}</a></li>\n                )}\n            </For>\n        </ul>\n    );\n}"
     },
     "seo": {
       "step": "Paso 5",
@@ -162,9 +165,11 @@
       "s1Title": "El segmento [locale]",
       "s1Body": "pages/[locale]/index.tsx se sirve en /es, /en, o cualquier locale que tengas en src/locales/.",
       "s2Title": "Traducir con t()",
-      "s2Body": "t(\"clave\") reconoce un patrón sintáctico exacto: un identificador t con un único string literal — sin interpolación, sin clave dinámica.",
+      "s2Body": "t(\"clave\") reconoce un patrón sintáctico exacto: un identificador t con un único string literal — sin clave dinámica (t(variable) no se reconoce).",
       "s3Title": "hreflang automático",
       "s3Body": "Si hay más de un locale disponible, Nexa genera los <link rel=\"alternate\" hreflang=\"...\"> de cada traducción automáticamente.",
+      "s4Title": "Interpolación: t(\"clave\", { variable })",
+      "s4Body": "El segundo argumento sustituye cada marcador de variable del texto (ver el ejemplo abajo) por una referencia data.x/params.x — la misma referencia limitada que acepta cualquier otra posición dinámica de Nexa, nunca un literal ni una expresión arbitraria. nexa build/nexa lint fallan con un error claro si una clave y sus argumentos no se corresponden (un marcador sin su variable, o una variable de sobra) — mejor un build roto y explícito que un marcador sin reemplazar en producción.",
       "s1Code": "src/pages/[locale]/index.tsx   ->  /es, /en, ...",
       "s2Code": "// src/locales/es.json\n{ \"home\": { \"title\": \"Bienvenido a Nexa\" } }\n\n// src/pages/[locale]/index.tsx\nexport default function Home() {\n    return <h1>{t(\"home.title\")}</h1>;\n}",
       "s3Code": "<link rel=\"alternate\" hreflang=\"es\" href=\"/es\">\n<link rel=\"alternate\" hreflang=\"en\" href=\"/en\">"
@@ -172,7 +177,7 @@
     "styling": {
       "step": "Paso 7",
       "title": "Estilos con @nexa/ui",
-      "intro": "Design tokens + 4 componentes reales en CSS (Button, Input, Card, Dialog), con tree-shaking real: el sitio solo envía el CSS de los componentes que de verdad usa. Sí, son solo 4 hoy — @nexa/ui es deliberadamente chico, no un kit completo (más abajo, cómo completarlo rápido si necesitás más).",
+      "intro": "Design tokens (con tema oscuro real) + componentes reales en CSS (Button, Input, Card, Dialog, Drawer) + un set chico de utilidades de layout, con tree-shaking real: el sitio solo envía el CSS de lo que de verdad usa. Deliberadamente chico, no un kit completo (más abajo, cómo completarlo rápido si necesitás más).",
       "s1Title": "Usar una clase",
       "s1Body": "Sin declarar nada — nexa build ya detecta las clases nx-* y genera el CSS correspondiente.",
       "s2Title": "Declararlo en nexa.toml",
@@ -180,13 +185,19 @@
       "s3Title": "Tree-shaking real",
       "s3Body": "nexa-ui.css lleva solo los tokens + los componentes que el sitio completo usa — una página 100% estática del mismo proyecto no lo enlaza en absoluto.",
       "s4Title": "¿Cuántos componentes hay, y qué hacer si necesitás más?",
-      "s4Body": "Hoy son exactamente 4: nx-btn, nx-input, nx-card, nx-dialog (más los tokens de color/espaciado/radio) — la lista completa, con cada modificador, está en docs/REFERENCIA.md del repo de Nexa. Para armar un diseño completo rápido tenés tres caminos, y los tres usan el mismo mecanismo (un <link>, visto en el paso anterior): (1) escribir tu propio CSS de cero — este mismo tutorial lo hace así, un site.css a mano enlazado en el layout; (2) usar Tailwind (por CDN para prototipar, o tu propio build para producción) + un kit de componentes ya armados sobre Tailwind como DaisyUI o Flowbite; o (3) usar Bootstrap, PrimeVue/PrimeReact, o el que prefieras. @nexa/ui y un framework de terceros no compiten — podés usar nx-btn para lo simple y Tailwind/Bootstrap para el resto del layout, en la misma página.",
+      "s4Body": "Hoy son Button, Input, Card, Dialog y Drawer (más los tokens de color/espaciado/radio y un set chico de utilidades de layout, ver más abajo) — la lista completa, con cada modificador, está en docs/REFERENCIA.md del repo de Nexa. Para armar un diseño completo rápido tenés tres caminos, y los tres usan el mismo mecanismo (un <link>, visto en el paso anterior): (1) escribir tu propio CSS de cero — este mismo tutorial lo hace así, un site.css a mano enlazado en el layout; (2) usar Tailwind (por CDN para prototipar, o tu propio build para producción) + un kit de componentes ya armados sobre Tailwind como DaisyUI o Flowbite; o (3) usar Bootstrap, PrimeVue/PrimeReact, o el que prefieras. @nexa/ui y un framework de terceros no compiten — podés usar nx-btn para lo simple y Tailwind/Bootstrap para el resto del layout, en la misma página.",
       "s5Title": "Toast/snackbar para dashboards: ui.notify()",
-      "s5Body": "No confundir con platform.notify() (una notificación real del sistema operativo, vista en el paso de librerías) — ui.notify() es una notificación efímera dentro de la página, tipo $q.notify() de Quasar. Se apila con otras, se auto-cierra a los 4s (duration: 0 lo desactiva), es accesible (role=\"status\") y no necesita declarar nada: ui ya es builtin, igual que para el Dialog.",
+      "s5Body": "No confundir con platform.notify() (una notificación real del sistema operativo, vista en el paso de empaquetado nativo) — ui.notify() es una notificación efímera dentro de la página, tipo $q.notify() de Quasar. Se apila con otras, se auto-cierra a los 4s (duration: 0 lo desactiva), es accesible (role=\"status\") y no necesita declarar nada: ui ya es builtin, igual que para el Dialog.",
+      "s6Title": "Dialog apilable + ui.confirm()/ui.alert()",
+      "s6Body": "Abrir un segundo Dialog mientras el primero está abierto se apila de verdad (z-index correcto por profundidad, aria-hidden en el que queda cubierto) — el foco ya estaba aislado por diálogo desde siempre. ui.confirm()/ui.alert() son el caso común de confirmar antes de borrar algo, o avisar que algo se guardó, sin escribir el <div class=\"nx-dialog\"> a mano: devuelven una Promise real que resuelve con Aceptar/Cancelar/Escape. Drawer (para sidebars y menús) tiene el mismo foco atrapado que Dialog, con su propio CSS.",
+      "s7Title": "Tema oscuro y utilidades de layout",
+      "s7Body": "Sin llamar nunca a platform.theme.set(), el sitio ya respeta prefers-color-scheme del sistema operativo — el helper (platform.theme.set(\"dark\"|\"light\"|\"system\")) es solo para que el usuario elija explícitamente y esa elección le gane al sistema; se persiste solo con platform.storage(), ya visto. nx-flex/nx-grid/nx-stack son un set chico y deliberado de utilidades de layout, tree-shakeadas igual que el resto — no un sistema de utilidades completo tipo Tailwind.",
       "s1Code": "<button class=\"nx-btn nx-btn-primary\">Comprar</button>",
       "s2Code": "nexa add ui\n# Instalado @nexa/ui v0.1.0 (stable).\n# Registrado en nexa.toml y nexa.lock.",
       "s3Code": "# dist/assets/nexa-ui.<hash>.css\n# solo trae tokens + .nx-btn — nada de .nx-dialog si no se usó",
       "s4Code": "<!-- Tailwind Play CDN: rápido para prototipar; para producción, compilar el CSS -->\n<script src=\"https://cdn.tailwindcss.com\"></script>\n\n<!-- componentes ya armados sobre Tailwind -->\n<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/daisyui@4/dist/full.min.css\">\n\n<!-- o, clásico -->\n<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">",
+      "s6Code": "async function removeItem() {\n    if (await ui.confirm(\"¿Seguro que querés borrar esto?\")) {\n        // ...\n    }\n}\n\n<div class=\"nx-drawer\" hidden>...</div>",
+      "s7Code": "<button data-nexa-strategy=\"load\" onClick={() => platform.theme.set(\"dark\")}>Oscuro</button>\n\n<nav class=\"nx-flex nx-gap-3\">...</nav>\n<ul class=\"nx-grid nx-grid-cols-3\">...</ul>\n<main class=\"nx-stack\">...</main>",
       "s5Code": "function saveOk() {\n    ui.notify({ message: \"Guardado con éxito\", variant: \"success\" });\n}\n\nfunction saveError() {\n    ui.notify({ message: \"No se pudo guardar\", variant: \"danger\", duration: 0 });\n}"
     },
     "forms": {
@@ -212,7 +223,10 @@
       "s3Body": "Rust nunca abre ni interpreta el módulo del specifier — para el compilador, un data-nexa-island es un Element más, igual que cualquier otro atributo.",
       "s1Code": "<div data-nexa-island=\"dashboard\" data-nexa-strategy=\"visible\">\n    <p>Cargando panel…</p>\n</div>",
       "s2Code": "// src/islands/dashboard.island.ts\nexport default function mount(el, props) {\n    // @nexa/reactivity a mano, o un adaptador de Vue/Preact/etc.\n    return () => { /* cleanup opcional */ };\n}",
-      "s3Code": "// nexa.toml\n[imports]\ndashboard = \"/vendor/dashboard-island.js\""
+      "s3Code": "// nexa.toml\n[imports]\ndashboard = \"/vendor/dashboard-island.js\"",
+      "s4Title": "El hueco del medio: un modelo de componentes liviano",
+      "s4Body": "Cuando una isla necesita algo más que una señal suelta pero no justifica cargar un framework externo completo (un dropdown, un widget de chat simple), @nexa/reactivity ofrece composición real — Component<P> tipado por props, mountComponent() que devuelve una función de limpieza, y un ComponentContext (onCleanup/mount) que encadena la limpieza de los hijos a la del padre automáticamente. Sigue siendo cero Virtual DOM, y exclusivamente para código dentro de una isla nativa — nunca para páginas Nexa Core. El mismo widget de panel de tareas que necesitaba Vue 3 completo (~245KB) pesa ~4KB con esto.",
+      "s4Code": "import { mountComponent, type Component } from \"@nexa/reactivity\";\n\ninterface ItemProps { label: string }\nconst Item: Component<ItemProps> = (el, props) => {\n    el.textContent = props.label;\n};\n\ninterface ListProps { labels: string[] }\nconst List: Component<ListProps> = (el, props, ctx) => {\n    for (const label of props.labels) {\n        const li = document.createElement(\"li\");\n        el.appendChild(li);\n        ctx.mount(Item, li, { label });\n    }\n};\n\nexport default function mount(el: Element, props: Record<string, unknown>) {\n    return mountComponent(List, el, { labels: props.labels as string[] });\n}"
     },
     "libraries": {
       "step": "Paso 10",
@@ -229,7 +243,10 @@
       "s1Code": "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css\">",
       "s2Code": "<script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>\n\nfunction renderChart() {\n    new Chart(document.getElementById(\"grafico\"), {\n        type: \"bar\",\n        data: { labels: [\"Ene\", \"Feb\"], datasets: [{ data: [10, 20] }] }\n    });\n}",
       "s3Code": "# nexa.toml\n[imports]\nconfetti = \"https://esm.sh/canvas-confetti\"",
-      "s4Code": "<div data-nexa-island=\"game\" data-nexa-strategy=\"visible\">\n    <p>Cargando juego…</p>\n</div>\n\n// src/islands/game.island.ts — Phaser cargado como <script> global\nexport default function mount(el) {\n    const game = new Phaser.Game({ parent: el, width: 800, height: 600 });\n    return () => game.destroy(true);\n}"
+      "s4Code": "<div data-nexa-island=\"game\" data-nexa-strategy=\"visible\">\n    <p>Cargando juego…</p>\n</div>\n\n// src/islands/game.island.ts — Phaser cargado como <script> global\nexport default function mount(el) {\n    const game = new Phaser.Game({ parent: el, width: 800, height: 600 });\n    return () => game.destroy(true);\n}",
+      "s5Title": "Vendorizar un paquete de npm real: la guía completa",
+      "s5Body": "Cuando el paquete tiene dependencias propias o viene en CommonJS (el caso más común, no solo ESM puro del punto anterior), hace falta un paso de bundling — instalar el paquete en cualquier lado con npm, un entry.js que re-exporte lo necesario, y esbuild --bundle --format=esm a un único archivo, copiado a public/vendor/. El proceso paso a paso, con dos ejemplos reales ya probados (con envoltorio propio, y sin ninguno), está en docs/VENDORING.md del repo de Nexa.",
+      "s5Code": "mkdir vendor-build && cd vendor-build\nnpm install marked\necho 'export { marked } from \"marked\";' > entry.js\nnpx esbuild entry.js --bundle --format=esm --target=es2022 --outfile=marked.js\ncp marked.js ../public/vendor/marked.js\n\n# nexa.toml\n[imports]\nmarked = \"/vendor/marked.js\""
     },
     "realtime": {
       "step": "Paso 11",
@@ -239,8 +256,11 @@
       "s1Body": "data es el último mensaje recibido, parseado como JSON si se puede.",
       "s2Title": "WebSocket",
       "s2Body": "status refleja el ciclo de vida real de la conexión; send() serializa objetos como JSON automáticamente.",
+      "s3Title": "Reconexión real, con backoff",
+      "s3Body": "Si la conexión se cae, reconnect: true (o un objeto { maxAttempts, baseDelayMs, maxDelayMs } para ajustarlo) hace que se reconecte sola con backoff exponencial + jitter — status pasa por \"reconnecting\" mientras lo intenta. Verificado matando y levantando un servidor de WebSocket real mientras un navegador real mantenía la conexión abierta. Sin esa opción, sigue siendo el comportamiento de siempre: status pasa a \"closed\" y se queda ahí.",
       "s1Code": "import { connectSSE } from \"@nexa/http\";\n\nconst notifications = connectSSE({ url: \"/events\" });\n// notifications.data.value -> el último mensaje",
-      "s2Code": "import { connectSocket } from \"@nexa/http\";\n\nconst chat = connectSocket({ url: \"wss://miapp.com/chat\" });\nchat.send({ text: \"hola\" });\n// chat.status.value -> \"connecting\" | \"open\" | \"closed\""
+      "s2Code": "import { connectSocket } from \"@nexa/http\";\n\nconst chat = connectSocket({ url: \"wss://miapp.com/chat\" });\nchat.send({ text: \"hola\" });\n// chat.status.value -> \"connecting\" | \"open\" | \"reconnecting\" | \"closed\"",
+      "s3Code": "const chat = connectSocket({\n    url: \"wss://miapp.com/chat\",\n    reconnect: { maxAttempts: 10, baseDelayMs: 500, maxDelayMs: 15000 }\n});"
     },
     "layouts": {
       "step": "Paso 12",
@@ -254,7 +274,10 @@
       "s3Body": "Todo lo demás que devuelve el layout termina dentro de <body> (vía el splice de arriba) — un <link rel=\"icon\"> puesto ahí queda atrapado en <body>, donde no todos los navegadores lo detectan de forma confiable (este mismo sitio tuvo exactamente ese bug). export const head = { icon, appleTouchIcon, stylesheets } se resuelve aparte y se mezcla en el <head> de verdad del documento — mismo patrón que seo/schema, un objeto literal, nunca código ejecutado.",
       "s1Code": "// src/layout.tsx\nexport default function Layout() {\n    return (\n        <div>\n            <header>Mi sitio</header>\n            <div data-nexa-slot></div>\n            <footer>© 2026</footer>\n        </div>\n    );\n}",
       "s2Code": "// Rust renderiza el layout, encuentra el ÚNICO data-nexa-slot\n// (debe estar vacío), e inserta ahí el HTML que ya renderizó\n// la página — un splice de texto, no una llamada de función.",
-      "s3Code": "// src/layout.tsx\nexport const head = {\n    icon: \"/static/logo.svg\",\n    appleTouchIcon: \"/static/icon-180.png\",\n    stylesheets: [\"/static/site.css\"]\n};\n\nexport default function Layout() { /* ... */ }"
+      "s3Code": "// src/layout.tsx\nexport const head = {\n    icon: \"/static/logo.svg\",\n    appleTouchIcon: \"/static/icon-180.png\",\n    stylesheets: [\"/static/site.css\"]\n};\n\nexport default function Layout() { /* ... */ }",
+      "s4Title": "Islas en el layout, y navegación sin recargar el header",
+      "s4Body": "Un onClick propio del layout sigue haciendo fallar el build (sus ids compartirían manifiesto con los de cada página) — pero una isla sí puede vivir ahí, y sobrevive intacta a la navegación SPA: un dropdown de usuario con estado real, por ejemplo. Además, cuando el proyecto usa layout, la navegación entre páginas ya no reemplaza todo <body>: solo el contenido dentro de data-nexa-slot cambia, así que el header/nav del layout (y su isla, si tiene una) nunca se desmontan entre una página y la siguiente.",
+      "s4Code": "// src/layout.tsx — la isla vive fuera de data-nexa-slot,\n// sobrevive a cada navegación\n<header>\n    <div data-nexa-island=\"userMenu\" data-nexa-strategy=\"visible\">\n        <p>Cargando…</p>\n    </div>\n</header>\n<div data-nexa-slot></div>"
     },
     "pwa": {
       "step": "Paso 13",
@@ -291,17 +314,23 @@
     },
     "native": {
       "step": "Paso 16",
-      "title": "Empaquetado nativo",
-      "intro": "El mismo código fuente compila a un binario de escritorio real (Tauri), un APK real (Capacitor Android) o un proyecto Xcode real (Capacitor iOS) — sin reescribir nada. Web, escritorio, Android e iOS desde un solo proyecto.",
+      "title": "Empaquetado nativo y @nexa/platform",
+      "intro": "El mismo código fuente compila a un binario de escritorio real (Tauri), un APK real (Capacitor Android) o un proyecto Xcode real (Capacitor iOS) — sin reescribir nada. Web, escritorio, Android e iOS desde un solo proyecto, y @nexa/platform es lo que hace que el mismo handler funcione en los tres sin ramas propias.",
       "s1Title": "Escritorio con Tauri",
       "s1Body": "Genera src-tauri/ real — cargo build produce un binario de escritorio real y ejecutable en Windows, macOS y Linux.",
       "s2Title": "Android con Capacitor",
       "s2Body": "Requiere el SDK de Android instalado — el resultado es un APK real, compilado con Gradle. Verificado de punta a punta con un SDK real.",
       "s3Title": "iOS con Capacitor",
       "s3Body": "Mismo capacitor.config.json que Android — add ios genera un proyecto Xcode real (ios/). Necesita macOS con Xcode para compilar: no probado en este entorno Linux, pero el mecanismo es idéntico al de Android.",
+      "s4Title": "@nexa/platform: un mismo handler, tres plataformas",
+      "s4Body": "platform.share()/platform.notify()/platform.capturePhoto() llaman al plugin real de Capacitor en Android/iOS (@capacitor/share, etc.) y a la Web API estándar en web y en el webview de Tauri — sin que el proyecto escriba ninguna rama propia. platform.storage()/platform.sessionStorage() envuelven localStorage/sessionStorage con el mismo contrato en los tres entornos; platform.cache() da acceso directo a la Cache API (sin declarar [pwa]); platform.db(\"nombre\") es un wrapper mínimo sobre IndexedDB, sin declarar nada de antemano. Cada función lanza un Error con mensaje claro si la capacidad no está disponible — nunca falla en silencio.",
+      "s5Title": "Tema oscuro, red y ciclo de vida",
+      "s5Body": "platform.theme.set(\"dark\"|\"light\"|\"system\") persiste la preferencia y le gana al prefers-color-scheme del sistema (sin llamarlo nunca, el sitio ya lo respeta). platform.network.getStatus()/onChange() dan el estado de conectividad real (online/offline, y el tipo de conexión en Capacitor); platform.lifecycle.getState()/onChange() avisan cuando la app pasa a segundo plano o vuelve — en Capacitor vía @capacitor/app, en web vía document.hidden/visibilitychange. Se amplía de a un módulo por vez, según necesidad real: geolocalización, deep links, push real, biometría y haptics todavía no están.",
       "s1Code": "nexa add tauri\ncd src-tauri && cargo build\n# binario de escritorio real, ejecutable",
       "s2Code": "nexa add capacitor\nnpx @capacitor/cli add android\ncd android && ./gradlew assembleDebug\n# APK real en app/build/outputs/apk/debug/",
-      "s3Code": "nexa add capacitor\nnpx @capacitor/cli add ios\nnpx cap open ios\n# abre el proyecto real en Xcode (requiere macOS)"
+      "s3Code": "nexa add capacitor\nnpx @capacitor/cli add ios\nnpx cap open ios\n# abre el proyecto real en Xcode (requiere macOS)",
+      "s4Code": "function shareThis() {\n    platform.share({ title: \"Nexa\", url: location.href });\n}\n\nconst users = platform.db(\"users\");\nawait users.set(\"1\", { name: \"Ada\" });",
+      "s5Code": "platform.theme.set(\"dark\");\n\nplatform.network.onChange((status) => {\n    console.log(status.online, status.type);\n});\n\nplatform.lifecycle.onChange((state) => {\n    console.log(state.active ? \"activa\" : \"en segundo plano\");\n});"
     },
     "production": {
       "step": "Paso 17",
@@ -313,11 +342,14 @@
       "s2Body": "Compila el proyecto (dist/ fresco, con los nombres de archivo con hash) y corre el test runner de JS del proyecto contra ese build.",
       "s3Title": "nexa add nginx",
       "s3Body": "Genera un deploy/nginx.conf real: gzip, cabeceras de seguridad, y caché immutable de un año solo para los archivos que de verdad llevan un hash de contenido.",
-      "s4Title": "Listo",
-      "s4Body": "dist/ es 100% estático — cualquier hosting lo sirve. Este tutorial completo termina acá: ya tenés lo que hace falta para llevar un proyecto Nexa real a producción.",
+      "s4Title": "Rutas dinámicas sin paths, en producción real",
+      "s4Body": "Una ruta que no declara paths (el espacio de parámetros no se puede enumerar de antemano) sigue sin poder pre-renderizarse — pero nexa add nginx también genera un proxy_pass real hacia nexa preview corriendo detrás, probado de punta a punta contra un backend real: no es \"corré el dev server en prod\", es un mecanismo documentado y verificado.",
+      "s5Title": "Listo",
+      "s5Body": "dist/ es 100% estático — cualquier hosting lo sirve. Este tutorial completo termina acá: ya tenés lo que hace falta para llevar un proyecto Nexa real a producción.",
       "s1Code": "nexa lint\n# [NEXA-SEO-001] falta `title` en `seo`\n# Error: `nexa lint` encontró avisos",
       "s2Code": "nexa test\n# Compilando el proyecto antes de correr los tests...\n# Corriendo `npm test`...",
-      "s3Code": "nexa add nginx\n# Genera deploy/nginx.conf — gzip, cabeceras de seguridad,\n# cache immutable de un año solo para archivos con hash."
+      "s3Code": "nexa add nginx\n# Genera deploy/nginx.conf — gzip, cabeceras de seguridad,\n# cache immutable de un año solo para archivos con hash.",
+      "s4Code": "location /articles/ {\n    proxy_pass http://127.0.0.1:4321;\n    proxy_set_header Host $host;\n}\n# nexa preview corriendo detrás, sirviendo esa ruta al vuelo"
     }
   }
 }

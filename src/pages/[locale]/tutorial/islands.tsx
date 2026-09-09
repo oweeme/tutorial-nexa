@@ -52,6 +52,12 @@ export default function TutorialIslands() {
                 <p>{t("tutorial.islands.s3Body")}</p>
             </section>
 
+            <section>
+                <h2>{t("tutorial.islands.s4Title")}</h2>
+                <pre><code>{t("tutorial.islands.s4Code")}</code></pre>
+                <p>{t("tutorial.islands.s4Body")}</p>
+            </section>
+
                 <nav class="nx-tutorial-nav">
                     <a href={`/${params.locale}/tutorial/forms`}>← {t("tutorial.prevLabel")}</a>
                     <a href={`/${params.locale}/tutorial/libraries`}>{t("tutorial.nextLabel")} →</a>

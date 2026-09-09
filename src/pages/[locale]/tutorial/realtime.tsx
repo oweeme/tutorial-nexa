@@ -46,6 +46,12 @@ export default function TutorialRealtime() {
                 <p>{t("tutorial.realtime.s2Body")}</p>
             </section>
 
+            <section>
+                <h2>{t("tutorial.realtime.s3Title")}</h2>
+                <pre><code>{t("tutorial.realtime.s3Code")}</code></pre>
+                <p>{t("tutorial.realtime.s3Body")}</p>
+            </section>
+
                 <nav class="nx-tutorial-nav">
                     <a href={`/${params.locale}/tutorial/libraries`}>← {t("tutorial.prevLabel")}</a>
                     <a href={`/${params.locale}/tutorial/layouts`}>{t("tutorial.nextLabel")} →</a>
