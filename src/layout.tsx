@@ -15,6 +15,7 @@ export default function Layout() {
                 <nav class="nx-nav">
                     <a href={`/${params.locale}`}>{t("nav.home")}</a>
                     <a href={`/${params.locale}/tutorial`}>{t("nav.tutorial")}</a>
+                    <a href={`/${params.locale}/reference`}>{t("nav.reference")}</a>
                     <a href={`/${params.locale}/compatibility`}>{t("nav.compat")}</a>
                     <a href="https://github.com/oweeme/tutorial-nexa" class="nx-nav-github">{t("nav.github")}</a>
                     <span class="nx-lang-switch">
